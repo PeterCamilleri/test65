@@ -1,6 +1,7 @@
-require "test65/version"
+# test65
+
+require_relative 'test65/version'
 
 module Test65
-  class Error < StandardError; end
-  # Your code goes here...
+  # Application code goes here!
 end
