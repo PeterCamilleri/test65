@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["peter.c.camilleri@gmail.com"]
 
   spec.summary       = Test65::DESCRIPTION
-  spec.description   = "TODO: A longer description or just delete this line."
+  spec.description   = "A testing framework for work on the Commander X 16."
   spec.homepage      = "https://github.com/PeterCamilleri/test65"
   spec.license       = "MIT"
 
