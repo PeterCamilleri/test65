@@ -16,7 +16,4 @@ class Test65Test < Minitest::Test
     assert(::Test65::DESCRIPTION.is_a?(String))
   end
 
-  def test_it_does_something_useful
-    assert(false)
-  end
 end
