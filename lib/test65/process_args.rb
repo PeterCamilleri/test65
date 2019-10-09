@@ -26,8 +26,8 @@ module Test65
       when "--path"
         unless @path
           @path = File.absolute_path(std_path(arg))
-          fail "Path #{@path} does not exist." unless File.exists?(@path)
-          fail "Path #{@path} is not a folder." unless File.directory?(@path)
+          fail "Path #{local_path(@path)} does not exist." unless File.exists?(@path)
+          fail "Path #{local_path(@path)} is not a folder." unless File.directory?(@path)
 
           puts "Using path: #{@path}"
         else
