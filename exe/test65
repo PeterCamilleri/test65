@@ -3,4 +3,4 @@
 
 require_relative '../lib/test65'
 
-Test65.process(ARGV)
+Test65.process
