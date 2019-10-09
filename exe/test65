@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+#The test65 command line script.
+
+require_relative '../lib/test65'
+
+Test65.process(ARGV)
