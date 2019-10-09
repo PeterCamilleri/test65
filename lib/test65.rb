@@ -2,8 +2,11 @@
 
 require 'english'
 require 'getoptlong'
+require 'rbconfig'
 
 require_relative 'test65/process_args'
+require_relative 'test65/std_path'
+require_relative 'test65/host'
 require_relative 'test65/version'
 
 module Test65

@@ -25,7 +25,8 @@ module Test65
         @file_list << arg
       when "--path"
         unless @path
-          @path = arg
+          @path = File.absolute_path(std_path(arg))
+          puts "Using path: #{@path}"
         else
           fail "Multiple path options are not allowed."
         end
