@@ -15,6 +15,8 @@ module Test65
   def self.process
     process_args
 
+  rescue => err
+    puts "Error: #{err.to_s}"
   end
 
 end

@@ -23,7 +23,11 @@ module Test65
       when "--file"
         @file_list << arg
       when "--path"
-        @path = arg
+        unless @path
+          @path = arg
+        else
+          fail "Multiple path options are not allowed."
+        end
       else
         fail "Invalid option: #{opt}"
       end
