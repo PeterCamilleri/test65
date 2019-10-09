@@ -18,7 +18,8 @@ module Test65
       when "--help"
         display_help
       when "--version"
-        display_version
+        puts "test65 Version #{VERSION}"
+        exit
       when "--file"
         @file_list << arg
       when "--path"
@@ -44,7 +45,6 @@ Options:
   --path, -p     Specify the path to test files. (Only 1 allowed)
 
     EOF
-
     exit
   end
 
