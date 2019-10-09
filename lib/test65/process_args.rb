@@ -22,10 +22,13 @@ module Test65
         puts "test65 Version #{VERSION}"
         exit
       when "--file"
-        @file_list << arg
+        @file_list << std_path(arg)
       when "--path"
         unless @path
           @path = File.absolute_path(std_path(arg))
+          fail "Path #{@path} does not exist." unless File.exists?(@path)
+          fail "Path #{@path} is not a folder." unless File.directory?(@path)
+
           puts "Using path: #{@path}"
         else
           fail "Multiple path options are not allowed."
