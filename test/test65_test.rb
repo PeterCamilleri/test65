@@ -49,6 +49,13 @@ class Test65Test < Minitest::Test
     assert_equal(0, $?.exitstatus)
     system "rm foo"
   end
+  
+  def test_that_it_fails
+    system "ruby exe/test65 min_fail.a65 > foo\n"
+    assert_equal(1, $?.exitstatus)
+    system "rm foo"
+  end
+  
 
 
 end
