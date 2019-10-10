@@ -62,7 +62,7 @@ module Test65
     fail "Default path not found."
   end
 
-  # Scan the list of files to be processed.
+  # Scan the path for files to be processed.
   def self.scan_files
     @file_list = Dir.glob(@path + "/t65*.a65")
     fail "Cannot locate any test files" if @file_list.empty?
