@@ -4,7 +4,7 @@ module Test65
 
   # Determine the path to test files.
   def self.process_path(path)
-    path = get_default_path unless path
+    path ||= get_default_path
     fail "Path #{local_path(path)} does not exist."  unless File.exists?(path)
     fail "Path #{local_path(path)} is not a folder." unless File.directory?(path)
     puts "Using path: #{path}" if @debug
