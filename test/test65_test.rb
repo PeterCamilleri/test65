@@ -38,4 +38,10 @@ class Test65Test < Minitest::Test
     system "rm foo"
   end
 
+  def test_that_it_traps_bad_paths
+    system "ruby exe/test65 -p xyzzy > foo\n"
+    assert_equal(1, $?.exitstatus)
+    system "rm foo"
+  end
+
 end
