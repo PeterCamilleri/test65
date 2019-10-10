@@ -1,4 +1,4 @@
-# Process the Path to the Test files.
+# Process the path to the test files.
 
 module Test65
 

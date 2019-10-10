@@ -1,4 +1,4 @@
-# Process Command Line Args for the Test65 program.
+# Process the command line arguments for the test65 program.
 
 module Test65
   # Process the command line arguments

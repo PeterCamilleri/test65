@@ -1,4 +1,4 @@
-# Process Command Line Args for the Test65 program.
+# Build the list of test files to be processed.
 
 module Test65
   # Find the files to be tested.
