@@ -6,6 +6,8 @@ require 'pathname'
 require 'rbconfig'
 
 require_relative 'test65/process_args'
+require_relative 'test65/process_path'
+require_relative 'test65/build_file_list'
 require_relative 'test65/std_path'
 require_relative 'test65/host'
 require_relative 'test65/version'
@@ -21,7 +23,7 @@ module Test65
   #   0 for success
   #   1 for failure
   def self.process
-    process_args
+    build_file_list(process_path(process_args))
 
   rescue => err
     puts "Error: #{err.to_s}"
