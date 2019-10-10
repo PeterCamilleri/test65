@@ -5,6 +5,7 @@ require 'getoptlong'
 require 'pathname'
 require 'rbconfig'
 
+require_relative 'test65/process_files'
 require_relative 'test65/process_args'
 require_relative 'test65/process_path'
 require_relative 'test65/build_file_list'
@@ -24,6 +25,7 @@ module Test65
   #   1 for failure
   def self.process
     build_file_list(process_path(process_args))
+    process_file_list
 
   rescue => err
     puts "Error: #{err.to_s}"
