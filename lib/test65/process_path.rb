@@ -7,7 +7,7 @@ module Test65
     path ||= get_default_path
     fail "Path #{local_path(path)} does not exist."  unless File.exists?(path)
     fail "Path #{local_path(path)} is not a folder." unless File.directory?(path)
-    puts "Using path: #{path}" if @debug
+    puts "Using path: #{local_path(path)}" if @debug
     path
   end
 
@@ -20,7 +20,7 @@ module Test65
 
       if File.exists?(test)
         return test if File.directory?(test)
-        fail "The file #{test} is not a directory."
+        fail "The file #{local_path(test)} is not a folder."
       end
 
       search, parent = search.parent, search
