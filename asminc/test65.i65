@@ -17,3 +17,67 @@
   lda #err_code
   jmp exit
 .endmacro
+
+; Exit tests and return an error code if the Z flag is cleared (ne)
+.macro fail_ne err_code
+  .local no_error
+  beq no_error
+  tests_fail err_code
+no_error:
+.endmacro
+
+; Exit tests and return an error code if the Z flag is set (eq)
+.macro fail_ne err_code
+  .local no_error
+  bne no_error
+  tests_fail err_code
+no_error:
+.endmacro
+
+; Exit tests and return an error code if the C flag is cleared (cc)
+.macro fail_cc err_code
+  .local no_error
+  bcs no_error
+  tests_fail err_code
+no_error:
+.endmacro
+
+; Exit tests and return an error code if the C flag is set (cs)
+.macro fail_cs err_code
+  .local no_error
+  bcc no_error
+  tests_fail err_code
+no_error:
+.endmacro
+
+; Exit tests and return an error code if the N flag is cleared (pl)
+.macro fail_pl err_code
+  .local no_error
+  bmi no_error
+  tests_fail err_code
+no_error:
+.endmacro
+
+; Exit tests and return an error code if the N flag is set (mi)
+.macro fail_mi err_code
+  .local no_error
+  bpl no_error
+  tests_fail err_code
+no_error:
+.endmacro
+
+; Exit tests and return an error code if the V flag is cleared (vc)
+.macro fail_vc err_code
+  .local no_error
+  bvs no_error
+  tests_fail err_code
+no_error:
+.endmacro
+
+; Exit tests and return an error code if the V flag is set (vs)
+.macro fail_vs err_code
+  .local no_error
+  bvc no_error
+  tests_fail err_code
+no_error:
+.endmacro
