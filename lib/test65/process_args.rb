@@ -2,9 +2,9 @@
 
 module Test65
 
+  # Module instance variables
   @file_list = []
   @path = nil
-
 
   # Process the command line arguments
   def self.process_args
