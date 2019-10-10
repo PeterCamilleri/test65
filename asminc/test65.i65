@@ -1,0 +1,19 @@
+; Macro definitions for testing 65c02 code using sim65.
+
+.import exit:absolute ; Make sure we have this symbol defined.
+
+; Exit tests and return success!
+.macro tests_pass
+  lda #0
+  jmp exit
+.endmacro
+
+; Exit tests and return an error code :-(
+.macro tests_fail err_code
+  .if !.const(error_code) || (error_code < 2) || (error_code > 255)
+    .error "Invalid fail error code"
+  .endif
+
+  lda #err_code
+  jmp exit
+.endmacro
