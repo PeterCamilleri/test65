@@ -27,6 +27,7 @@ module Test65
 
   rescue => err
     puts "Error: #{err.to_s}"
+    exit(1)
   end
 
 end
