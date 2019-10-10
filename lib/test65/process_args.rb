@@ -44,6 +44,8 @@ module Test65
     else
       check_files
     end
+
+    puts "Processing #{@file_list.length} test file(s)"
   end
 
   # Get the default test file path if one was not supplied.
@@ -61,6 +63,8 @@ module Test65
 
   # Scan the list of files to be processed.
   def self.scan_files
+    @file_list = Dir.glob(@path + "/t65*.a65")
+    fail "Cannot locate any test files" if @file_list.empty?
   end
 
   # Check the list of files to be processed.
