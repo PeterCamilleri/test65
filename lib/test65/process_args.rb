@@ -3,18 +3,21 @@
 module Test65
   # Process the command line arguments
   def self.process_args
-    path = nil
+    @debug, path = false, nil
 
     opts = GetoptLong.new(
       [ "--help",       "-h", "-?", GetoptLong::NO_ARGUMENT ],
       [ "--version",    "-v",       GetoptLong::NO_ARGUMENT ],
-      [ "--path",       "-p",       GetoptLong::REQUIRED_ARGUMENT ])
+      [ "--path",       "-p",       GetoptLong::REQUIRED_ARGUMENT ],
+      [ "--debug",      "-d",       GetoptLong::NO_ARGUMENT ])
 
     opts.each do |opt, arg|
       case opt
       when "--help"
         display_help
         exit
+      when "--debug"
+        @debug = true
       when "--version"
         puts "test65 Version #{VERSION}"
         exit
@@ -34,7 +37,7 @@ module Test65
     @file_list = ARGV
 
     path = get_default_path unless path
-    puts "Using path: #{path}"
+    puts "Using path: #{path}" if @debug
 
     if @file_list.empty?
       scan_files(path)
@@ -42,7 +45,7 @@ module Test65
       check_files(path)
     end
 
-    puts "Processing #{@file_list.length} test file(s)"
+    puts "Processing #{@file_list.length} test file(s)" if @debug
   end
 
   # Get the default test file path if one was not supplied.
@@ -88,6 +91,7 @@ Options:
   --help, -h, -? Display this message and exit.
   --version, -v  Display the program version and exit.
   --path, -p     Specify the path to the test files. (Only 1 allowed)
+  --debug, -d    Display lots of useful progress info.
 
 Files: An optional list of test files.
 
