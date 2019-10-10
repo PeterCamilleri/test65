@@ -70,7 +70,12 @@ Options:
   --help, -h, -? Display this message and exit.
   --version, -v  Display the program version and exit.
   --file, -f     Specify a test file to test. (Multiple allowed)
-  --path, -p     Specify the path to test files. (Only 1 allowed)
+  --path, -p     Specify the path to the test files. (Only 1 allowed)
+
+- By default, test files are located in a folder called "t65" in the current
+  folder or one of its parent folders.
+- If no files are specified, then all files matching "t65*.a65" in the test
+  folder are tested. Otherwise only the specified file(s) are tested.
 
     EOF
     exit
