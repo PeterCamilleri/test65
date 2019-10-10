@@ -28,8 +28,6 @@ module Test65
           @path = File.absolute_path(std_path(arg))
           fail "Path #{local_path(@path)} does not exist." unless File.exists?(@path)
           fail "Path #{local_path(@path)} is not a folder." unless File.directory?(@path)
-
-          puts "Using path: #{@path}"
         else
           fail "Multiple path options are not allowed."
         end
@@ -38,6 +36,27 @@ module Test65
       end
     end
 
+    @path = get_default_path unless @path
+    puts "Using path: #{@path}"
+
+    build_file_list
+  end
+
+  # Get the default test file path if one was not supplied.
+  def self.get_default_path
+    search = Pathname.new(Dir.pwd)
+
+    while search != (parent = search.parent)
+      test = search.to_s + "/t65"
+      return test if File.exists?(test) && File.directory?(test)
+      search = parent
+    end
+
+    fail "Default path not found."
+  end
+
+  # Get the list of files to be processed.
+  def self.build_file_list
   end
 
   # Display program usage info.

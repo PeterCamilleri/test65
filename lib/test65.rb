@@ -2,6 +2,7 @@
 
 require 'english'
 require 'getoptlong'
+require 'pathname'
 require 'rbconfig'
 
 require_relative 'test65/process_args'
