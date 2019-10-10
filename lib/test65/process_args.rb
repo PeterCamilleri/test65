@@ -39,7 +39,11 @@ module Test65
     @path = get_default_path unless @path
     puts "Using path: #{@path}"
 
-    build_file_list
+    if @file_list.empty?
+      scan_files
+    else
+      check_files
+    end
   end
 
   # Get the default test file path if one was not supplied.
@@ -55,8 +59,21 @@ module Test65
     fail "Default path not found."
   end
 
-  # Get the list of files to be processed.
-  def self.build_file_list
+  # Scan the list of files to be processed.
+  def self.scan_files
+  end
+
+  # Check the list of files to be processed.
+  def self.check_files
+    @file_list = @file_list.map do |file|
+      if File.exists?(file)
+        File.absolute_path(file)
+      elsif File.exists?(@path + "/" + file)
+        @path + "/" + file
+      else
+        fail "Cannot locate the file #{file}"
+      end
+    end
   end
 
   # Display program usage info.
