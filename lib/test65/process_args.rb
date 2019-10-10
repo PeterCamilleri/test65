@@ -18,6 +18,7 @@ module Test65
       case opt
       when "--help"
         display_help
+        exit
       when "--version"
         puts "test65 Version #{VERSION}"
         exit
@@ -99,7 +100,6 @@ Options:
   folder are tested. Otherwise only the specified file(s) are tested.
 
     EOF
-    exit
   end
 
 end
