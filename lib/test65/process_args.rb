@@ -1,10 +1,6 @@
 # Process Command Line Args for the Test65 program.
 
 module Test65
-
-  # Module instance variables
-  @file_list = []
-
   # Process the command line arguments
   def self.process_args
     path = nil
