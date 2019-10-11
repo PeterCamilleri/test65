@@ -86,4 +86,10 @@ class Test65Test < Minitest::Test
     system "rm foo"
   end
 
+  def test_the_default_tests
+    system "ruby exe/test65 > foo\n"
+    assert_equal(0, $?.exitstatus)
+    system "rm foo"
+  end
+
 end
