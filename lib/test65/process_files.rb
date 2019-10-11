@@ -30,7 +30,7 @@ module Test65
 
   # Assemble some code.
   def self.ca65(file)
-    unless system("ca65 --target sim65c02 #{file} -o test.o\n")
+    unless system("ca65 --target sim65c02 -I #{@asminc} #{file} -o test.o\n")
       fail "Error assembling #{file}"
     end
   end

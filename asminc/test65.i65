@@ -27,7 +27,7 @@ no_error:
 .endmacro
 
 ; Exit tests and return an error code if the Z flag is set (eq)
-.macro fail_ne err_code
+.macro fail_eq err_code
   .local no_error
   bne no_error
   tests_fail err_code
