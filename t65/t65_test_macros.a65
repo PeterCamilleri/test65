@@ -1,0 +1,37 @@
+; Test a whole bunch of macros!
+
+.include "test65.i65"
+.export _main
+.pc02
+
+.code
+
+_main:
+  lda #$00
+  fail_ne 10
+
+  inc
+  fail_eq 20
+  fail_mi 30
+
+  dec
+  dec
+  fail_pl 40
+
+  clc
+  adc #$02
+  fail_cc 50
+
+  clc
+  adc #$00
+  fail_cs 60
+
+  clv
+  fail_vs 70
+
+  lda #$70
+  clc
+  adc #$70
+  fail_vc 80
+
+  tests_pass
