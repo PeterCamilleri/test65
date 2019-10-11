@@ -26,18 +26,19 @@ module Test65
   ensure
     File.delete("test.out") if File.exists?("test.out")
     File.delete("test.o")   if File.exists?("test.o")
+    File.delete("_kwhyit")  if File.exists?("_kwhyit")
   end
 
   # Assemble some code.
   def self.ca65(file)
-    unless system("ca65 --target sim65c02 -I #{@asminc} #{file} -o test.o\n")
+    unless system("ca65 --target sim65c02 -I #{@asminc} #{file} -o test.o #{@quiet}\n")
       fail "Error assembling #{file}"
     end
   end
 
   # Link some code.
   def self.ld65
-    unless system("ld65 --target sim65c02 --lib sim65c02.lib test.o -o test.out\n")
+    unless system("ld65 --target sim65c02 --lib sim65c02.lib test.o -o test.out #{@quiet}\n")
       fail "Error linking test."
     end
   end

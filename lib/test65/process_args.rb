@@ -3,12 +3,13 @@
 module Test65
   # Process the command line arguments
   def self.process_args
-    @debug, path = false, nil
+    @debug, @quiet, path = false, "", nil
 
     opts = GetoptLong.new(
       [ "--help",       "-h", "-?", GetoptLong::NO_ARGUMENT ],
       [ "--version",    "-v",       GetoptLong::NO_ARGUMENT ],
       [ "--path",       "-p",       GetoptLong::REQUIRED_ARGUMENT ],
+      [ "--quiet",      "-q",       GetoptLong::NO_ARGUMENT ],
       [ "--debug",      "-d",       GetoptLong::NO_ARGUMENT ])
 
     opts.each do |opt, arg|
@@ -18,6 +19,8 @@ module Test65
         exit
       when "--debug"
         @debug = true
+      when "--quiet"
+        @quiet = "2> _kwhyit"
       when "--version"
         puts "test65 Version #{VERSION}"
         exit
