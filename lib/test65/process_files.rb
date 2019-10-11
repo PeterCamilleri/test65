@@ -50,7 +50,7 @@ module Test65
   def self.sim65
     system("sim65 test.out\n")
     status = $?.exitstatus
-    fail "Test failed with error code: #{status}" if status > 0
+    fail "Test failed with error code: #{status}" unless $?.exitstatus == 0
   end
 
 end
