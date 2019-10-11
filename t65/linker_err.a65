@@ -1,0 +1,13 @@
+; Minimum code that passes a test
+
+.import exit:absolute
+.import an_error:absolute
+.export _main
+
+.pc02
+
+.code
+
+_main:
+  lda an_error
+  jmp exit
