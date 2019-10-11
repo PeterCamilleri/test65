@@ -1,13 +1,19 @@
 # Test65
 
-This is a simple test suite written to allow the testing of 65C02 code that I
-am writing for the Commander X 16 neo-retro computer.
+This is a simple program written to allow the testing of 65C02 code that
+I am writing for the Commander X 16 neo-retro computer.
 
 ## Installation
 
 This gem is too specialized to place in a Ruby Gem repository so the normal
-use cases for installing and using this gem do not apply. To install, get
-the download the repo and then install the gem directly from the pkg folder.
+use cases for installing and using this gem do not apply. To install, first
+install the cc65 compiler and ensure that it is available at the command line.
+You can test this with:
+
+    ca65 --version
+
+Then download the Test65 repo (or at least the one file you will need) and
+then install the gem directly from the pkg folder like this:
 
     $ gem install pkg/test65-0.1.0.gem
 
