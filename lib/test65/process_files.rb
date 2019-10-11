@@ -23,10 +23,10 @@ module Test65
 
     ca65(file)
     ld65(file)
-    sim65()
+    sim65(file)
 
   rescue => err
-    puts err if @debug
+    puts err
     @error_count += 1
   ensure
     File.delete("test.out") if File.exists?("test.out")
@@ -47,10 +47,10 @@ module Test65
   end
 
   # Simulate some code.
-  def self.sim65
+  def self.sim65(file)
     system("sim65 test.out\n")
     status = $?.exitstatus
-    fail "Test failed with error code: #{status}" unless $?.exitstatus == 0
+    fail "Test #{file} failed with error code: #{status}" unless $?.exitstatus == 0
   end
 
 end
