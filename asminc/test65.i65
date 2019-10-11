@@ -10,12 +10,16 @@
 
 ; Exit tests and return an error code :-(
 .macro tests_fail err_code
-  .if !.const(error_code) || (error_code < 2) || (error_code > 255)
-    .error "Invalid fail error code"
-  .endif
+  .ifconst err_code
+    .if (err_code < 2) || (err_code > 255)
+      .error "Invalid error code. Allowed values 2..255"
+    .endif
 
-  lda #err_code
-  jmp exit
+    lda #err_code
+    jmp exit
+  .else
+    .error "Error code must be a constant"
+  .endif
 .endmacro
 
 ; Exit tests and return an error code if the Z flag is cleared (ne)

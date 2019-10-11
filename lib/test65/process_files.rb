@@ -2,22 +2,27 @@
 
 module Test65
 
-  # Process the list of file
+  # Process the list of files
   def self.process_file_list
+    @error_count = 0
+
     @file_list.each do |file|
       process_file(file)
     end
 
-    fail "#{@error_count} tests failed." if @error_count > 0
+    if @error_count > 0
+      fail "#{@error_count} tests failed."
+    else
+      puts "OK: All tests passed."
+    end
   end
 
   # Process a file.
   def self.process_file(file)
-    @error_count = 0
     puts file if @debug
 
     ca65(file)
-    ld65()
+    ld65(file)
     sim65()
 
   rescue => err
@@ -31,16 +36,14 @@ module Test65
 
   # Assemble some code.
   def self.ca65(file)
-    unless system("ca65 --target sim65c02 -I #{@asminc} #{file} -o test.o #{@quiet}\n")
-      fail "Error assembling #{file}"
-    end
+    system("ca65 --target sim65c02 -I #{@asminc} #{file} -o test.o #{@quiet}\n")
+    fail "Error assembling #{file}" unless $?.exitstatus == 0
   end
 
   # Link some code.
-  def self.ld65
-    unless system("ld65 --target sim65c02 --lib sim65c02.lib test.o -o test.out #{@quiet}\n")
-      fail "Error linking test."
-    end
+  def self.ld65(file)
+    system("ld65 --target sim65c02 --lib sim65c02.lib test.o -o test.out #{@quiet}\n")
+    fail "Error linking #{file}." unless $?.exitstatus == 0
   end
 
   # Simulate some code.
