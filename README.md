@@ -1,26 +1,35 @@
 # Test65
 
-WIP
+This is a simple test suite written to allow the testing of 65C02 code that I
+am writing for the Commander X 16 neo-retro computer.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+This gem is too specialized to place in a Ruby Gem repository so the normal
+use cases for installing and using this gem do not apply. To install, get
+the download the repo and then install the gem directly from the pkg folder.
 
-```ruby
-gem 'test65'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install test65
+    $ gem install pkg/test65-0.1.0.gem
 
 ## Usage
 
-WIP
+    test65 - Run tests of 65c02 assembler code.
+
+    Usage: test65 {options} {files}
+
+    Options:
+      --help, -h, -?   Display this message and exit.
+      --version, -v    Display the program version and exit.
+      --path, -p       Specify the path to the test files. (Only 1 allowed)
+      --debug, -d      Display lots of useful progress info.
+
+    Files: An optional list of test files.
+
+    Notes:
+    - By default, test files are located in a folder called "t65" in the current
+      folder or one of its parent folders.
+    - If no files are specified, then all files matching "t65*.a65" in the test
+      folder are tested. Otherwise only the specified file(s) are tested.
 
 ## Contributing
 1. Fork it
