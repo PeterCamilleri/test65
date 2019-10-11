@@ -8,9 +8,14 @@ I am writing for the Commander X 16 neo-retro computer.
 This gem is too specialized to place in a Ruby Gem repository so the normal
 use cases for installing and using this gem do not apply. To install, first
 install the cc65 compiler and ensure that it is available at the command line.
-You can test this with:
+You can test the required components with:
 
     ca65 --version
+    ld65 --version
+    sim65 --version
+    set CC65_HOME
+
+The last test should show the variable is set to the cc65 program folder.
 
 Then download the Test65 repo (or at least the one file you will need) and
 then install the gem directly from the pkg folder like this:
