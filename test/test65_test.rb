@@ -56,6 +56,11 @@ class Test65Test < Minitest::Test
     system "rm foo"
   end
   
+  def test_that_it_handles_asm_errors
+    system "ruby exe/test65 asm_err.a65 > foo\n"
+    assert_equal(1, $?.exitstatus)
+    system "rm foo"
+  end
 
 
 end

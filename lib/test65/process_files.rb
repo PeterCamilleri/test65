@@ -24,8 +24,8 @@ module Test65
     puts err if @debug
     @error_count += 1
   ensure
-    system("rm test.out")
-    system("rm test.o")
+    File.delete("test.out") if File.exists?("test.out")
+    File.delete("test.o")   if File.exists?("test.o")
   end
 
   # Assemble some code.
