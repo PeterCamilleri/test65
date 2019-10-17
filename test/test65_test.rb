@@ -23,79 +23,79 @@ class Test65Test < Minitest::Test
   def test_that_help_works
     system "ruby exe/test65 -? > foo\n"
     assert_equal(0, $?.exitstatus)
-    system "rm foo"
+    system "rm foo\n"
   end
 
   def test_that_version_works
     system "ruby exe/test65 -v > foo\n"
     assert_equal(0, $?.exitstatus)
-    system "rm foo"
+    system "rm foo\n"
   end
 
   def test_that_it_traps_bad_files
     system "ruby exe/test65 xyzzy > foo\n"
     assert_equal(1, $?.exitstatus)
-    system "rm foo"
+    system "rm foo\n"
   end
 
   def test_that_it_traps_bad_paths
     system "ruby exe/test65 -p xyzzy > foo\n"
     assert_equal(1, $?.exitstatus)
-    system "rm foo"
+    system "rm foo\n"
   end
 
   def test_that_it_succeeds
     system "ruby exe/test65 min_pass.a65 > foo\n"
     assert_equal(0, $?.exitstatus)
-    system "rm foo"
+    system "rm foo\n"
   end
 
   def test_that_it_fails
     system "ruby exe/test65 min_fail.a65 > foo\n"
     assert_equal(1, $?.exitstatus)
-    system "rm foo"
+    system "rm foo\n"
   end
 
   def test_that_it_handles_asm_errors
     system "ruby exe/test65 -q asm_err.a65 > foo\n"
     assert_equal(1, $?.exitstatus)
-    system "rm foo"
+    system "rm foo\n"
   end
 
   def test_that_it_handles_linker_errors
     system "ruby exe/test65 -q linker_err.a65 > foo\n"
     assert_equal(1, $?.exitstatus)
-    system "rm foo"
+    system "rm foo\n"
   end
 
   def test_that_it_supports_the_test_include
     system "ruby exe/test65 pass.a65 > foo\n"
     assert_equal(0, $?.exitstatus)
-    system "rm foo"
+    system "rm foo\n"
   end
 
   def test_that_it_handles_macro_errors
     system "ruby exe/test65 -q macro_err1.a65 > foo\n"
     assert_equal(1, $?.exitstatus)
-    system "rm foo"
+    system "rm foo\n"
   end
 
   def test_that_it_handles_other_macro_errors
     system "ruby exe/test65 -q macro_err2.a65 > foo\n"
     assert_equal(1, $?.exitstatus)
-    system "rm foo"
+    system "rm foo\n"
   end
 
   def test_the_default_tests
     system "ruby exe/test65 > foo\n"
     assert_equal(0, $?.exitstatus)
-    system "rm foo"
+    system "rm foo\n"
   end
 
   def test_that_it_handles_wild_cards
     system "ruby exe/test65 -q *pass.a65 > foo\n"
     assert_equal(0, $?.exitstatus)
-    system "rm foo"
+    system "rm foo\n"
   end
 
 
