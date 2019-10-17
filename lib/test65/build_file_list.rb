@@ -25,10 +25,14 @@ module Test65
         File.absolute_path(file)
       elsif File.exists?(found = path + "/" + file)
         found
+      elsif !(found = Dir.glob(file)).empty?
+        found
+      elsif !(found = Dir.glob(path + "/" + file)).empty?
+        found
       else
         fail "Cannot locate the file #{file}"
       end
-    end
+    end.flatten
   end
 
 end
