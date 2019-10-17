@@ -21,12 +21,8 @@ module Test65
   # Check the list of files to be processed.
   def self.check_files(path)
     @file_list = @file_list.map do |file|
-      if File.exists?(file)
-        File.absolute_path(file)
-      elsif File.exists?(found = path + "/" + file)
-        found
-      elsif !(found = Dir.glob(file)).empty?
-        found
+      if !(found = Dir.glob(file)).empty?
+        found.map {|subfile| File.absolute_path(file) }
       elsif !(found = Dir.glob(path + "/" + file)).empty?
         found
       else
