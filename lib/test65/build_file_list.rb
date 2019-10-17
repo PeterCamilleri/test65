@@ -23,8 +23,8 @@ module Test65
     @file_list = @file_list.map do |file|
       if File.exists?(file)
         File.absolute_path(file)
-      elsif File.exists?(result = path + "/" + file)
-        result
+      elsif File.exists?(found = path + "/" + file)
+        found
       else
         fail "Cannot locate the file #{file}"
       end
