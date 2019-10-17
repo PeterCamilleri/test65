@@ -30,20 +30,21 @@ module Test65
     puts err
     @error_count += 1
   ensure
-    cleanup
+    cleanup unless @keep
   end
 
   # Setup the various intermediate file names.
   def self.generate_names(file)
-    @source = file
-    @object = file.gsub(/\...?.?\z/, ".o")
-    @output = file.gsub(/\...?.?\z/, ".out")
-    @list   = file.gsub(/\...?.?\z/, ".lst")
+    @source  = file
+    @object  = file.gsub(/\...?.?\z/, ".o")
+    @output  = file.gsub(/\...?.?\z/, ".out")
+    @listing = file.gsub(/\...?.?\z/, ".lst")
   end
 
   # Assemble some code.
   def self.ca65
-    system("ca65 --target sim65c02 -I #{@asminc} #{@source} -o #{@object} #{@quiet}\n")
+    lst = @list ? "-l #{@listing}" : ""
+    system("ca65 --target sim65c02 -I #{@asminc} #{@source} #{lst} -o #{@object} #{@quiet}\n")
     fail "Error assembling #{@source}" unless $?.exitstatus == 0
   end
 
@@ -64,6 +65,7 @@ module Test65
   def self.cleanup
     File.delete(@output)   if File.exists?(@output)
     File.delete(@object)   if File.exists?(@object)
+    File.delete(@listing)  if !@list && File.exists?(@listing)
     File.delete("_kwhyit") if File.exists?("_kwhyit")
   end
 

@@ -3,10 +3,12 @@ test65 - Run tests of 65c02 assembler code.
 Usage: test65 {options} {files}
 
 Options:
-  --help, -h, -?   Display this message and exit.
-  --version, -v    Display the program version and exit.
   --path, -p       Specify the path to the test files. (Only 1 allowed)
   --debug, -d      Display lots of useful progress info.
+  --list, -l       Generate list files for each test.
+  --keep, -k       Keep intermediate files. Do not cleanup.
+  --help, -h, -?   Display this message and exit.
+  --version, -v    Display the program version and exit.
 
 Files: An optional list of test files.
 
