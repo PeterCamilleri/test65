@@ -29,16 +29,19 @@ then install the gem directly from the pkg folder like this:
     Usage: test65 {options} {files}
 
     Options:
-      --help, -h, -?   Display this message and exit.
-      --version, -v    Display the program version and exit.
       --path, -p       Specify the path to the test files. (Only 1 allowed)
       --debug, -d      Display lots of useful progress info.
+      --list, -l       Generate list files for each test.
+      --keep, -k       Keep intermediate files. Do not cleanup.
+      --help, -h, -?   Display this message and exit.
+      --version, -v    Display the program version and exit.
 
     Files: An optional list of test files.
 
     Notes:
     - By default, test files are located in a folder called "t65" in the current
       folder or one of its parent folders.
+    - Wildcards are allowed for files but not the path.
     - If no files are specified, then all files matching "t65*.a65" in the test
       folder are tested. Otherwise only the specified file(s) are tested.
 
