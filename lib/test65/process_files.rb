@@ -45,20 +45,20 @@ module Test65
   def self.ca65
     lst = @list ? "-l #{@listing}" : ""
     system("ca65 --target sim65c02 -I #{@asminc} #{@source} #{lst} -o #{@object} #{@quiet}\n")
-    fail "Error assembling #{@source}" unless $?.exitstatus == 0
+    fail "Error assembling #{local_path(@source)}" unless $?.exitstatus == 0
   end
 
   # Link some code.
   def self.ld65
     system("ld65 --target sim65c02 --lib sim65c02.lib #{@object} -o #{@output} #{@quiet}\n")
-    fail "Error linking #{@source}." unless $?.exitstatus == 0
+    fail "Error linking #{local_path(@source)}." unless $?.exitstatus == 0
   end
 
   # Simulate some code.
   def self.sim65
     system("sim65 #{@output}\n")
     status = $?.exitstatus
-    fail "Test #{@source} failed with error code: #{status}" unless $?.exitstatus == 0
+    fail "Test #{local_path(@source)} failed with error code: #{status}" unless $?.exitstatus == 0
   end
 
   # Cleanup after ourselves.
