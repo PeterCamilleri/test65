@@ -3,7 +3,7 @@
 module Test65
   # Process the command line arguments
   def self.process_args
-    @keep, @list, @debug, @quiet, path = false, false, false, "", nil
+    @keep, @list, @verbose, @quiet, path = false, false, false, "", nil
 
     opts = GetoptLong.new(
       [ "--help",       "-h", "-?", GetoptLong::NO_ARGUMENT ],
@@ -20,7 +20,7 @@ module Test65
         puts IO.read(@gem_root + "/help.txt")
         exit
       when "--verbose"
-        @debug = true
+        @verbose = true
       when "--list"
         @list = true
       when "--keep"
