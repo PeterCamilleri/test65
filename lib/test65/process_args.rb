@@ -3,11 +3,12 @@
 module Test65
   # Process the command line arguments
   def self.process_args
-    @keep, @list, @verbose, @quiet, path = false, false, false, "", nil
+    @keep, @list, @map, @verbose, @quiet, path = false, false, false, false, "", nil
 
     opts = GetoptLong.new(
       [ "--help",       "-h", "-?", GetoptLong::NO_ARGUMENT ],
       [ "--list",       "-l",       GetoptLong::NO_ARGUMENT ],
+      [ "--map",        "-m",       GetoptLong::NO_ARGUMENT ],
       [ "--keep",       "-k",       GetoptLong::NO_ARGUMENT ],
       [ "--version",                GetoptLong::NO_ARGUMENT ],
       [ "--path",       "-p",       GetoptLong::REQUIRED_ARGUMENT ],
@@ -23,6 +24,8 @@ module Test65
         @verbose = true
       when "--list"
         @list = true
+      when "--map"
+        @map = true
       when "--keep"
         @keep = true
       when "--quiet"

@@ -39,6 +39,7 @@ module Test65
     @object  = file.gsub(/\...?.?\z/, ".o")
     @output  = file.gsub(/\...?.?\z/, ".out")
     @listing = file.gsub(/\...?.?\z/, ".lst")
+    @mapping = file.gsub(/\...?.?\z/, ".map")
   end
 
   # Assemble some code.
@@ -50,7 +51,8 @@ module Test65
 
   # Link some code.
   def self.ld65
-    system("ld65 --target sim65c02 --lib sim65c02.lib #{@object} -o #{@output} #{@quiet}\n")
+    map = @map ? "-m #{@mapping}" : ""
+    system("ld65 --target sim65c02 --lib sim65c02.lib #{@object} #{map} -o #{@output} #{@quiet}\n")
     fail "Error linking #{local_path(@source)}." unless $?.exitstatus == 0
   end
 
@@ -66,6 +68,7 @@ module Test65
     File.delete(@output)   if File.exists?(@output)
     File.delete(@object)   if File.exists?(@object)
     File.delete(@listing)  if !@list && File.exists?(@listing)
+    File.delete(@mapping)  if !@map  && File.exists?(@mapping)
     File.delete("_kwhyit") if File.exists?("_kwhyit")
   end
 
