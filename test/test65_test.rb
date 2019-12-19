@@ -1,11 +1,7 @@
 require_relative '../lib/test65'
 require          'minitest/autorun'
-require          'minitest_visible'
 
 class Test65Test < Minitest::Test
-
-  #Track mini-test progress.
-  include MinitestVisible
 
   def test_that_it_has_a_version_number
     refute_nil(::Test65::VERSION)
@@ -97,6 +93,5 @@ class Test65Test < Minitest::Test
     assert_equal(0, $?.exitstatus)
     system "rm foo\n"
   end
-
 
 end
