@@ -52,7 +52,8 @@ module Test65
   # Link some code.
   def self.ld65
     map = @map ? "-m #{@mapping}" : ""
-    system("ld65 --target sim65c02 --lib sim65c02.lib #{@object} #{map} -o #{@output} #{@quiet}\n")
+    cfg = "-C #{@gem_root}/cfg/test65.cfg"
+    system("ld65 --lib sim65c02.lib #{cfg} #{@object} #{map} -o #{@output} #{@quiet}\n")
     fail "Error linking #{local_path(@source)}." unless $?.exitstatus == 0
   end
 
