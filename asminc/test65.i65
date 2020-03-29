@@ -12,13 +12,13 @@
 .macro tests_fail err_code
   .ifconst err_code
     .if (err_code < 2) || (err_code > 255)
-      .error "Invalid error code. Allowed values 2..255"
+      .fatal "Invalid error code. Allowed values 2..255"
     .endif
 
     lda #err_code
     jmp exit
   .else
-    .error "Error code must be a constant"
+    .fatal "Error code must be a constant"
   .endif
 .endmacro
 
