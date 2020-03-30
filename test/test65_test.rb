@@ -3,6 +3,11 @@ require          'minitest/autorun'
 
 class Test65Test < Minitest::Test
 
+  def test_that_cc65_is_hooked_up
+    assert(ENV["path"]["cc65"], "cc65 is not in the path.")
+    assert(ENV["CC65_HOME"], "Environment variable CC65_HOME is not set.")
+  end
+
   def test_that_it_has_a_version_number
     refute_nil(::Test65::VERSION)
     assert(::Test65::VERSION.frozen?)
