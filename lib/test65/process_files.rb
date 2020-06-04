@@ -51,7 +51,7 @@ module Test65
 
   # Link some code.
   def self.ld65
-    map = @map ? "-m #{@mapping}" : ""
+    map = @map_option ? "-m #{@mapping}" : ""
     cfg = "-C #{@gem_root}/cfg/test65.cfg"
     system("ld65 --lib sim65c02.lib #{cfg} #{@object} #{map} -o #{@output} #{@quiet}\n")
     fail "Error linking #{local_path(@source)}." unless $?.exitstatus == 0
@@ -69,7 +69,7 @@ module Test65
     File.delete(@output)   if File.exists?(@output)
     File.delete(@object)   if File.exists?(@object)
     File.delete(@listing)  if !@list_option && File.exists?(@listing)
-    File.delete(@mapping)  if !@map  && File.exists?(@mapping)
+    File.delete(@mapping)  if !@map_option  && File.exists?(@mapping)
     File.delete("_kwhyit") if File.exists?("_kwhyit")
   end
 

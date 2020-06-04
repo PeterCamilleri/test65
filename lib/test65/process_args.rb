@@ -5,7 +5,8 @@ module Test65
   def self.process_args
     @keep_option = false
     @list_option = false
-    @map, @verbose, @quiet, @lib, path = false, false, "", [], nil
+    @map_option = false
+    @verbose, @quiet, @lib, path = false, "", [], nil
 
     opts = GetoptLong.new(
       ["--help",       "-h", "-?", GetoptLong::NO_ARGUMENT],
@@ -28,7 +29,7 @@ module Test65
       when "--list"
         @list_option = true
       when "--map"
-        @map = true
+        @map_option = true
       when "--keep"
         @keep_option = true
       when "--quiet"
