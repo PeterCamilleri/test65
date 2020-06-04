@@ -3,7 +3,7 @@
 module Test65
   # Process the command line arguments
   def self.process_args
-    @keep
+    @keep_option = false
     @list, @map, @verbose, @quiet, @lib, path = false, false, false, "", [], nil
 
     opts = GetoptLong.new(
