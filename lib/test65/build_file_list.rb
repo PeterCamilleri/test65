@@ -1,4 +1,4 @@
-# Build the list of test files to be processed.
+# Build the list of test and library files to be processed.
 
 module Test65
   # Find the files to be tested.

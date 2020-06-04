@@ -3,17 +3,18 @@
 module Test65
   # Process the command line arguments
   def self.process_args
-    @keep, @list, @map, @verbose, @quiet, path = false, false, false, false, "", nil
+    @keep, @list, @map, @verbose, @quiet, @lib, path = false, false, false, false, "", [], nil
 
     opts = GetoptLong.new(
-      [ "--help",       "-h", "-?", GetoptLong::NO_ARGUMENT ],
-      [ "--list",       "-l",       GetoptLong::NO_ARGUMENT ],
-      [ "--map",        "-m",       GetoptLong::NO_ARGUMENT ],
-      [ "--keep",       "-k",       GetoptLong::NO_ARGUMENT ],
-      [ "--version",                GetoptLong::NO_ARGUMENT ],
-      [ "--path",       "-p",       GetoptLong::REQUIRED_ARGUMENT ],
-      [ "--quiet",      "-q",       GetoptLong::NO_ARGUMENT ],
-      [ "--verbose",    "-v",       GetoptLong::NO_ARGUMENT ])
+      ["--help",       "-h", "-?", GetoptLong::NO_ARGUMENT],
+      ["--lib",                    GetoptLong::REQUIRED_ARGUMENT],
+      ["--list",       "-l",       GetoptLong::NO_ARGUMENT],
+      ["--map",        "-m",       GetoptLong::NO_ARGUMENT],
+      ["--keep",       "-k",       GetoptLong::NO_ARGUMENT],
+      ["--version",                GetoptLong::NO_ARGUMENT],
+      ["--path",       "-p",       GetoptLong::REQUIRED_ARGUMENT],
+      ["--quiet",      "-q",       GetoptLong::NO_ARGUMENT],
+      ["--verbose",    "-v",       GetoptLong::NO_ARGUMENT])
 
     opts.each do |opt, arg|
       case opt
@@ -33,6 +34,8 @@ module Test65
       when "--version"
         puts "test65 Version #{VERSION}"
         exit
+      when "--lib"
+        @lib << arg
       when "--path"
         unless path
           path = File.absolute_path(std_path(arg))
