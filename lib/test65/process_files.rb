@@ -44,7 +44,7 @@ module Test65
 
   # Assemble some code.
   def self.ca65
-    lst = @list ? "-l #{@listing}" : ""
+    lst = @list_option ? "-l #{@listing}" : ""
     system("ca65 --target sim65c02 -I #{@asminc} #{@source} #{lst} -o #{@object} #{@quiet}\n")
     fail "Error assembling #{local_path(@source)}" unless $?.exitstatus == 0
   end
@@ -68,7 +68,7 @@ module Test65
   def self.cleanup
     File.delete(@output)   if File.exists?(@output)
     File.delete(@object)   if File.exists?(@object)
-    File.delete(@listing)  if !@list && File.exists?(@listing)
+    File.delete(@listing)  if !@list_option && File.exists?(@listing)
     File.delete(@mapping)  if !@map  && File.exists?(@mapping)
     File.delete("_kwhyit") if File.exists?("_kwhyit")
   end

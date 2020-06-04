@@ -4,7 +4,8 @@ module Test65
   # Process the command line arguments
   def self.process_args
     @keep_option = false
-    @list, @map, @verbose, @quiet, @lib, path = false, false, false, "", [], nil
+    @list_option = false
+    @map, @verbose, @quiet, @lib, path = false, false, "", [], nil
 
     opts = GetoptLong.new(
       ["--help",       "-h", "-?", GetoptLong::NO_ARGUMENT],
@@ -25,7 +26,7 @@ module Test65
       when "--verbose"
         @verbose = true
       when "--list"
-        @list = true
+        @list_option = true
       when "--map"
         @map = true
       when "--keep"
