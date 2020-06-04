@@ -3,7 +3,8 @@
 module Test65
   # Process the command line arguments
   def self.process_args
-    @keep, @list, @map, @verbose, @quiet, @lib, path = false, false, false, false, "", [], nil
+    @keep
+    @list, @map, @verbose, @quiet, @lib, path = false, false, false, "", [], nil
 
     opts = GetoptLong.new(
       ["--help",       "-h", "-?", GetoptLong::NO_ARGUMENT],
@@ -28,7 +29,7 @@ module Test65
       when "--map"
         @map = true
       when "--keep"
-        @keep = true
+        @keep_option = true
       when "--quiet"
         @quiet = "2> _kwhyit"
       when "--version"

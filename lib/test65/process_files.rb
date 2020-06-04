@@ -30,7 +30,7 @@ module Test65
     puts err
     @error_count += 1
   ensure
-    cleanup unless @keep
+    cleanup unless @keep_option
   end
 
   # Setup the various intermediate file names.
