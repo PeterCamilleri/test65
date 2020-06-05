@@ -19,7 +19,7 @@ module Test65
 
   # Process a file.
   def self.process_file(file)
-    puts local_path(file) if @verbose_option
+    puts localize_path(file) if @verbose_option
 
     generate_names(file)
     ca65
@@ -46,7 +46,7 @@ module Test65
   def self.ca65
     lst = @list_option ? "-l #{@listing}" : ""
     system("ca65 --target sim65c02 -I #{@asminc} #{@source} #{lst} -o #{@object} #{@quiet_option}\n")
-    fail "Error assembling #{local_path(@source)}" unless $?.exitstatus == 0
+    fail "Error assembling #{localize_path(@source)}" unless $?.exitstatus == 0
   end
 
   # Link some code.
@@ -54,14 +54,14 @@ module Test65
     map = @map_option ? "-m #{@mapping}" : ""
     cfg = "-C #{@gem_root}/cfg/test65.cfg"
     system("ld65 --lib sim65c02.lib #{cfg} #{@object} #{map} -o #{@output} #{@quiet_option}\n")
-    fail "Error linking #{local_path(@source)}." unless $?.exitstatus == 0
+    fail "Error linking #{localize_path(@source)}." unless $?.exitstatus == 0
   end
 
   # Simulate some code.
   def self.sim65
     system("sim65 #{@output}\n")
     status = $?.exitstatus
-    fail "Test #{local_path(@source)} failed with error code: #{status}" unless $?.exitstatus == 0
+    fail "Test #{localize_path(@source)} failed with error code: #{status}" unless $?.exitstatus == 0
   end
 
   # Cleanup after ourselves.

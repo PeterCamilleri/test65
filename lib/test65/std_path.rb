@@ -8,7 +8,7 @@ module Test65
   end
 
   # Convert a path string into local system form.
-  def self.local_path(path)
+  def self.localize_path(path)
     windows? ? path.gsub("/", "\\") : path
   end
 
