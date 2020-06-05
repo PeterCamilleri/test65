@@ -21,9 +21,11 @@ module Test65
   # Check the list of files to be processed.
   def self.check_files(path)
     @test_files = @test_files.map do |file|
-      if !(found = Dir.glob(standardize_path(file))).empty?
+      std_file = standardize_path(file)
+
+      if !(found = Dir.glob(std_file)).empty?
         found.map {|subfile| File.absolute_path(file) }
-      elsif !(found = Dir.glob(path + "/" + standardize_path(file))).empty?
+      elsif !(found = Dir.glob(path + "/" + std_file)).empty?
         found
       else
         fail "Cannot locate the file #{file}"
