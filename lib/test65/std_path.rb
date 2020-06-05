@@ -3,7 +3,7 @@
 module Test65
 
   # Convert a path into standard form.
-  def self.std_path(path)
+  def self.standardize_path(path)
     path.gsub("\\", "/")
   end
 

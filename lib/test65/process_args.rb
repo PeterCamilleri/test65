@@ -45,7 +45,7 @@ module Test65
         @lib << arg
       when "--path"
         unless path
-          path = File.absolute_path(std_path(arg))
+          path = File.absolute_path(standardize_path(arg))
         else
           fail "Multiple path options are not allowed."
         end
