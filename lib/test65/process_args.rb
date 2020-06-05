@@ -18,10 +18,10 @@ module Test65
       ["--list",       "-l",       GetoptLong::NO_ARGUMENT],
       ["--map",        "-m",       GetoptLong::NO_ARGUMENT],
       ["--keep",       "-k",       GetoptLong::NO_ARGUMENT],
-      ["--version",                GetoptLong::NO_ARGUMENT],
       ["--path",       "-p",       GetoptLong::REQUIRED_ARGUMENT],
       ["--quiet",      "-q",       GetoptLong::NO_ARGUMENT],
-      ["--verbose",    "-v",       GetoptLong::NO_ARGUMENT])
+      ["--verbose",    "-v",       GetoptLong::NO_ARGUMENT],
+      ["--version",                GetoptLong::NO_ARGUMENT])
 
     opts.each do |opt, arg|
       case opt
