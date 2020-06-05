@@ -1,12 +1,15 @@
 # Process the command line arguments for the test65 program.
 
 module Test65
-  # Process the command line arguments
+  # Process the command line arguments.
   def self.process_args
-    @keep_option = false
-    @list_option = false
-    @map_option = false
-    @verbose, @quiet, @lib, path = false, "", [], nil
+
+    # Set options to default values.
+    @keep_option    = false
+    @list_option    = false
+    @map_option     = false
+    @verbose_option = false
+    @quiet, @lib, path = "", [], nil
 
     opts = GetoptLong.new(
       ["--help",       "-h", "-?", GetoptLong::NO_ARGUMENT],
@@ -25,7 +28,7 @@ module Test65
         puts IO.read(@gem_root + "/help.txt")
         exit
       when "--verbose"
-        @verbose = true
+        @verbose_option = true
       when "--list"
         @list_option = true
       when "--map"

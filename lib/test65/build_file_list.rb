@@ -9,7 +9,7 @@ module Test65
       check_files(path)
     end
 
-    puts "Processing #{@file_list.length} test file(s)" if @verbose
+    puts "Processing #{@file_list.length} test file(s)" if @verbose_option
   end
 
   # Scan the path for files to be processed.

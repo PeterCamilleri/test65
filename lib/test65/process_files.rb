@@ -19,7 +19,7 @@ module Test65
 
   # Process a file.
   def self.process_file(file)
-    puts local_path(file) if @verbose
+    puts local_path(file) if @verbose_option
 
     generate_names(file)
     ca65
