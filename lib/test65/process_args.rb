@@ -57,6 +57,13 @@ module Test65
     @test_files = ARGV
 
     path
+
+  rescue => err
+    puts "Error: #{err.to_s}"
+    puts
+    puts IO.read(@gem_root + "/help.txt")
+    exit
+
   end
 
 end
