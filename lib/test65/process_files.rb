@@ -45,7 +45,7 @@ module Test65
   # Assemble some code.
   def self.ca65
     lst = @list_option ? "-l #{@listing}" : ""
-    system("ca65 --target sim65c02 -I #{@asminc} #{@source} #{lst} -o #{@object} #{@quiet}\n")
+    system("ca65 --target sim65c02 -I #{@asminc} #{@source} #{lst} -o #{@object} #{@quiet_option}\n")
     fail "Error assembling #{local_path(@source)}" unless $?.exitstatus == 0
   end
 
@@ -53,7 +53,7 @@ module Test65
   def self.ld65
     map = @map_option ? "-m #{@mapping}" : ""
     cfg = "-C #{@gem_root}/cfg/test65.cfg"
-    system("ld65 --lib sim65c02.lib #{cfg} #{@object} #{map} -o #{@output} #{@quiet}\n")
+    system("ld65 --lib sim65c02.lib #{cfg} #{@object} #{map} -o #{@output} #{@quiet_option}\n")
     fail "Error linking #{local_path(@source)}." unless $?.exitstatus == 0
   end
 

@@ -9,7 +9,8 @@ module Test65
     @list_option    = false
     @map_option     = false
     @verbose_option = false
-    @quiet, @lib, path = "", [], nil
+    @quiet_option   = ""
+    @lib, path = [], nil
 
     opts = GetoptLong.new(
       ["--help",       "-h", "-?", GetoptLong::NO_ARGUMENT],
@@ -36,7 +37,7 @@ module Test65
       when "--keep"
         @keep_option = true
       when "--quiet"
-        @quiet = "2> _kwhyit"
+        @quiet_option = "2> _kwhyit"
       when "--version"
         puts "test65 Version #{VERSION}"
         exit
