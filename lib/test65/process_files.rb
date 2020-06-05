@@ -6,7 +6,7 @@ module Test65
   def self.process_file_list
     @error_count = 0
 
-    @file_list.each do |file|
+    @test_files.each do |file|
       process_file(file)
     end
 
