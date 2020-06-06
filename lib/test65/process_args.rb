@@ -3,9 +3,7 @@
 module Test65
   # Process the command line arguments.
   def self.process_args
-
     @options = {}
-    path = nil
 
     opts = GetoptLong.new(
       ["--help",       "-h", "-?", GetoptLong::NO_ARGUMENT],
@@ -29,8 +27,8 @@ module Test65
       when "--map"
         @options[:map] = true
       when "--path"
-        unless path
-          path = File.absolute_path(standardize_path(arg))
+        unless @options[:path]
+          @options[:path] = File.absolute_path(standardize_path(arg))
         else
           fail "Multiple path options are not allowed."
         end
@@ -46,9 +44,8 @@ module Test65
       end
     end
 
+    # A list of files to test may follow the options.
     @arg_files = ARGV
-
-    path
 
   rescue => err
     puts "Error: #{err.to_s}"

@@ -25,7 +25,9 @@ module Test65
   #   0 for success
   #   1 for failure
   def self.process
-    build_file_list(process_path(process_args))
+    process_args
+    process_path
+    build_file_list
     process_file_list
 
   rescue => err
