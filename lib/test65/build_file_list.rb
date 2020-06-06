@@ -3,7 +3,7 @@
 module Test65
   # Find the files to be tested.
   def self.build_file_list(path)
-    if @test_files.empty?
+    if @arg_files.empty?
       scan_files(path)
     else
       check_files(path)
@@ -20,7 +20,7 @@ module Test65
 
   # Check the list of files to be processed.
   def self.check_files(path)
-    @test_files = @test_files.map do |file|
+    @test_files = @arg_files.map do |file|
       std_file = standardize_path(file)
 
       if !(found = Dir.glob(std_file)).empty?

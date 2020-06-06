@@ -46,7 +46,7 @@ module Test65
       end
     end
 
-    @test_files = ARGV
+    @arg_files = ARGV
 
     path
 
