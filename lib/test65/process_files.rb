@@ -19,7 +19,7 @@ module Test65
 
   # Process a file.
   def self.process_file(file)
-    puts localize_path(file) if @verbose_option
+    puts localize_path(file) if @options[:verbose]
 
     generate_names(file)
     ca65
@@ -30,7 +30,7 @@ module Test65
     puts err
     @error_count += 1
   ensure
-    cleanup unless @keep_option
+    cleanup unless @options[:keep]
   end
 
   # Setup the various intermediate file names.
@@ -44,16 +44,16 @@ module Test65
 
   # Assemble some code.
   def self.ca65
-    lst = @list_option ? "-l #{@listing}" : ""
-    system("ca65 --target sim65c02 -I #{@asminc} #{@source} #{lst} -o #{@object} #{@quiet_option}\n")
+    lst = @options[:list] ? "-l #{@listing}" : ""
+    system("ca65 --target sim65c02 -I #{@asminc} #{@source} #{lst} -o #{@object} #{@options[:quiet].to_s}\n")
     fail "Error assembling #{localize_path(@source)}" unless $?.exitstatus == 0
   end
 
   # Link some code.
   def self.ld65
-    map = @map_option ? "-m #{@mapping}" : ""
+    map = @options[:map] ? "-m #{@mapping}" : ""
     cfg = "-C #{@gem_root}/cfg/test65.cfg"
-    system("ld65 --lib sim65c02.lib #{cfg} #{@object} #{map} -o #{@output} #{@quiet_option}\n")
+    system("ld65 --lib sim65c02.lib #{cfg} #{@object} #{map} -o #{@output} #{@options[:quiet].to_s}\n")
     fail "Error linking #{localize_path(@source)}." unless $?.exitstatus == 0
   end
 
@@ -68,8 +68,8 @@ module Test65
   def self.cleanup
     File.delete(@output)   if File.exists?(@output)
     File.delete(@object)   if File.exists?(@object)
-    File.delete(@listing)  if !@list_option && File.exists?(@listing)
-    File.delete(@mapping)  if !@map_option  && File.exists?(@mapping)
+    File.delete(@listing)  if !@options[:list] && File.exists?(@listing)
+    File.delete(@mapping)  if  @options[:map]  && File.exists?(@mapping)
     File.delete("_kwhyit") if File.exists?("_kwhyit")
   end
 

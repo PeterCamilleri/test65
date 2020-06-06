@@ -7,7 +7,7 @@ module Test65
     path ||= get_default_path
     fail "Path #{localize_path(path)} does not exist."  unless File.exists?(path)
     fail "Path #{localize_path(path)} is not a folder." unless File.directory?(path)
-    puts "Using path: #{localize_path(path)}" if @verbose_option
+    puts "Using path: #{localize_path(path)}" if @options[:verbose]
     path
   end
 

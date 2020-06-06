@@ -4,13 +4,8 @@ module Test65
   # Process the command line arguments.
   def self.process_args
 
-    # Set options to default values.
-    @keep_option    = false
-    @list_option    = false
-    @map_option     = false
-    @verbose_option = false
-    @quiet_option   = ""
-    @lib, path = [], nil
+    @options = {}
+    path = nil
 
     opts = GetoptLong.new(
       ["--help",       "-h", "-?", GetoptLong::NO_ARGUMENT],
@@ -28,11 +23,11 @@ module Test65
         puts IO.read(@gem_root + "/help.txt")
         exit
       when "--keep"
-        @keep_option = true
+        @options[:keep] = true
       when "--list"
-        @list_option = true
+        @options[:list] = true
       when "--map"
-        @map_option = true
+        @options[:map] = true
       when "--path"
         unless path
           path = File.absolute_path(standardize_path(arg))
@@ -40,9 +35,9 @@ module Test65
           fail "Multiple path options are not allowed."
         end
       when "--quiet"
-        @quiet_option = "2> _kwhyit"
+        @options[:quiet] = "2> _kwhyit"
       when "--verbose"
-        @verbose_option = true
+        @options[:verbose] = true
       when "--version"
         puts "test65 Version #{VERSION}"
         exit
