@@ -3,14 +3,13 @@ test65 - Run tests of 65c02 assembler code.
 Usage: test65 {options} {files}
 
 Options:
-  --path,    -p    Specify the path to the test files. (Only 1 allowed)
-  --lib            Specify the name of a library file to link into the tests.
+  --help, -h, -?   Display this message and exit.
   --list,    -l    Generate list files for each test.
   --map,     -m    Generate map files for each test.
   --keep,    -k    Keep intermediate files. Do not clean up.
-  --verbose, -v    Display lots of useful progress info.
+  --path,    -p    Specify the path to the test files. (Only 1 allowed)
   --quiet,   -q    Hide messages. Used to keep the test65 tests clean.
-  --help, -h, -?   Display this message and exit.
+  --verbose, -v    Display lots of useful progress info.
   --version        Display the program version and exit.
 
 Files: An optional list of test files.
