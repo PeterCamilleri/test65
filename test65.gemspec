@@ -23,6 +23,8 @@ Gem::Specification.new do |spec|
                          .grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_runtime_dependency "full_dup"
+
   spec.add_development_dependency "bundler", "~> 1.17"
   spec.add_development_dependency "rake", ">= 12.3.3"
   spec.add_development_dependency "minitest", "~> 5.0"
