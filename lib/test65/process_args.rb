@@ -14,7 +14,6 @@ module Test65
 
     opts = GetoptLong.new(
       ["--help",       "-h", "-?", GetoptLong::NO_ARGUMENT],
-      ["--lib",                    GetoptLong::REQUIRED_ARGUMENT],
       ["--list",       "-l",       GetoptLong::NO_ARGUMENT],
       ["--map",        "-m",       GetoptLong::NO_ARGUMENT],
       ["--keep",       "-k",       GetoptLong::NO_ARGUMENT],
@@ -28,27 +27,25 @@ module Test65
       when "--help"
         puts IO.read(@gem_root + "/help.txt")
         exit
-      when "--verbose"
-        @verbose_option = true
+      when "--keep"
+        @keep_option = true
       when "--list"
         @list_option = true
       when "--map"
         @map_option = true
-      when "--keep"
-        @keep_option = true
-      when "--quiet"
-        @quiet_option = "2> _kwhyit"
-      when "--version"
-        puts "test65 Version #{VERSION}"
-        exit
-      when "--lib"
-        @lib << arg
       when "--path"
         unless path
           path = File.absolute_path(standardize_path(arg))
         else
           fail "Multiple path options are not allowed."
         end
+      when "--quiet"
+        @quiet_option = "2> _kwhyit"
+      when "--verbose"
+        @verbose_option = true
+      when "--version"
+        puts "test65 Version #{VERSION}"
+        exit
       else
         fail "Invalid option: #{opt}"
       end
@@ -63,7 +60,6 @@ module Test65
     puts
     puts IO.read(@gem_root + "/help.txt")
     exit
-
   end
 
 end
