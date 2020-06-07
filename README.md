@@ -29,12 +29,14 @@ then install the gem directly from the pkg folder like this:
     Usage: test65 {options} {files}
 
     Options:
-      --path, -p       Specify the path to the test files. (Only 1 allowed)
-      --debug, -d      Display lots of useful progress info.
-      --list, -l       Generate list files for each test.
-      --keep, -k       Keep intermediate files. Do not cleanup.
       --help, -h, -?   Display this message and exit.
-      --version, -v    Display the program version and exit.
+      --list,    -l    Generate list files for each test.
+      --map,     -m    Generate map files for each test.
+      --keep,    -k    Keep intermediate files. Do not clean up.
+      --path,    -p    Specify the path to the test files. (Only 1 allowed)
+      --quiet,   -q    Hide messages. Used to keep the test65 tests clean.
+      --verbose, -v    Display lots of useful progress info.
+      --version        Display the program version and exit.
 
     Files: An optional list of test files.
 
