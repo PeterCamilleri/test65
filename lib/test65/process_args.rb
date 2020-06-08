@@ -47,6 +47,10 @@ module Test65
     # A list of files to test may follow the options.
     @arg_files = ARGV
 
+    # Setup some default paths
+    @options[:gem_root] = @gem_root
+    @options[:asminc]   = @gem_root + "/asminc"
+
   rescue => err
     puts "Error: #{err.to_s}"
     puts
