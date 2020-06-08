@@ -9,6 +9,12 @@ class TestScript
   # Create a test script object and set up its default options.
   def initialize(options={}, source=nil)
     @options = options.full_dup
+    @phase   = :create
+
+    @options[:target] = "sim65c02"
+    @options[:config] = "#{@options[:gem_root]}/cfg/test65.cfg"
+    @options[:asminc] = ["#{@options[:gem_root]}/asminc"]
+    @options[:libs]   = ["sim65c02.lib"]
 
     if source
       @options[:asm_src] = [source]
