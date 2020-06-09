@@ -9,7 +9,11 @@ class TestScript
     source_files = (@options[:asm_src] + more_files).flatten
     @options[:asm_src] = []
 
+    # Convert source assemble files into object files.
     source_files.each do |source_file|
+
+
+      @options[:objs] << change_type(source_file, ".o")
     end
   end
 end
