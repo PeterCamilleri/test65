@@ -3,8 +3,8 @@
 class TestScript
 
   def sim65
-    fail "Sequence error" unless @phase == :link
-    @phase == :simulate
+    fail "Sequence error" unless @phase == :simulate
+    @phase == :done
 
 
   end

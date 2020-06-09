@@ -7,4 +7,10 @@ class TestScript
     file.gsub(/\...?.?\z/, new_ext)
   end
 
+  #Construct a series of arguments.
+  def build_args(prefix = nil, args)
+    p = prefix ? prefix + " " : ""
+    args.inject("") {|s,a| s << p + a + " "}
+  end
+
 end

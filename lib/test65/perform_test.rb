@@ -12,20 +12,17 @@ class TestScript
     @options = options.full_dup
     @phase   = :create
 
-    @options[:target] = "sim65c02"
-    @options[:config] = "#{@options[:gem_root]}/cfg/test65.cfg"
-    @options[:asminc] = ["#{@options[:gem_root]}/asminc"]
-    @options[:libs]   = ["sim65c02.lib"]
-
     if source
       @options[:asm_src] = [source]
-      @options[:objs]    = [change_type(source, ".o")]
-      @options[:out]     = change_type(source, ".out")
     else
       @options[:asm_src] = []
-      @options[:objs]    = []
-      @options[:out]     = "a.out"
     end
+
+    @options[:target] = "sim65c02"
+    @options[:asminc] = ["#{@options[:gem_root]}/asminc"]
+    @options[:objs]   = []
+    @options[:libs]   = ["sim65c02.lib"]
+    @options[:config] = "#{@options[:gem_root]}/cfg/test65.cfg"
   end
 
 end

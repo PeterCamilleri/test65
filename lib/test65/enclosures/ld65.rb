@@ -2,12 +2,9 @@
 
 class TestScript
 
-  def ld65(*more_files)
-    fail "Sequence error" unless @phase == :create
-    @phase == :link
-
-    object_files = (@options[:objs] + more_files).flatten.sort
-
+  def ld65
+    fail "Sequence error" unless [:create, :link].include?(@phase)
+    @phase = :simulate
 
   end
 
