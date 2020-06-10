@@ -48,8 +48,8 @@ module Test65
     @arg_files = ARGV
 
     # Setup some default paths
-    @options[:gem_root] = @gem_root
-    @options[:asminc]   = @gem_root + "/asminc"
+    @options[:gem_root]   = @gem_root
+    @options[:ca65_paths] = @gem_root + "/asminc"
 
   rescue => err
     puts "Error: #{err.to_s}"

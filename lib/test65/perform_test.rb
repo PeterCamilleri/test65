@@ -19,9 +19,9 @@ class TestScript
     end
 
     @options[:target] = "sim65c02"
-    @options[:asminc] = ["#{@options[:gem_root]}/asminc"]
-    @options[:objs]   = []
-    @options[:libs]   = ["sim65c02.lib"]
+    @options[:ca65_paths] = ["#{@options[:gem_root]}/asminc"]
+    @options[:objs] = []
+    @options[:libs] = ["sim65c02.lib"]
     @options[:config] = "#{@options[:gem_root]}/cfg/test65.cfg"
   end
 
