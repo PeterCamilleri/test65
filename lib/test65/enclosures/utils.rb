@@ -7,10 +7,14 @@ class TestScript
     file.gsub(/\...?.?\z/, new_ext)
   end
 
-  #Construct a series of arguments.
+  # Construct a series of arguments.
   def build_args(prefix = nil, args)
-    p = prefix ? prefix + " " : ""
-    args.inject("") {|s,a| s << p + a + " "}
+    pre = prefix ? prefix + " " : ""
+    args.inject("") {|str, arg| str << pre + arg + " "}
   end
 
+  # Append to an option.
+  def append_option(key, *value)
+    @options[key] = ((@options[key] || []) + [value]).flatten
+  end
 end

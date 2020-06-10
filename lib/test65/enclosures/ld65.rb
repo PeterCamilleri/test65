@@ -3,7 +3,7 @@
 class TestScript
 
   def ld65
-    fail "Sequence error" unless [:create, :link].include?(@phase)
+    fail "Sequence error: ld65" unless [:create, :link].include?(@phase)
     @phase = :simulate
 
     @target   = change_type(@options[:objs][0], ".out")
