@@ -30,7 +30,7 @@ class TestScript
     lib_paths = build_args("--lib-path", @options[:lib_paths])
     objs      = build_args(@options[:objs])
     libs      = build_args("--lib", @options[:libraries])
-    opts      = build_args(@options[:ld65_options)
+    opts      = build_args(@options[:ld65_options])
     map       = @options[:map] ? "-m #{@mapping}" : ""
     cfg       = "-C #{@gem_root}/cfg/test65.cfg"
 

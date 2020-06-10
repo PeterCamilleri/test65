@@ -13,7 +13,7 @@ class TestScript
     fail "Sequence error: sim65" unless @phase == :simulate
     @phase == :done
 
-    opts = build_args(@options[:sim65_options)
+    opts = build_args(@options[:sim65_options])
     system("sim65 #{opts} #{@target}\n")
     status = $?.exitstatus
     fail "Test #{localize_path(@target)} failed with error code: #{status}" unless status == 0
