@@ -18,7 +18,7 @@ class TestScript
 
   def ld65_options(*more_options)
     fail "Sequence error: ld65_options" unless [:create, :link].include?(@phase)
-    append_option(:libraries, more_options)
+    append_option(:ld65_options, more_options)
     @phase = :link
   end
 
@@ -30,6 +30,7 @@ class TestScript
     lib_paths = build_args("--lib-path", @options[:lib_paths])
     objs      = build_args(@options[:objs])
     libs      = build_args("--lib", @options[:libraries])
+    opts      = build_args(@options[:ld65_options)
     map       = @options[:map] ? "-m #{@mapping}" : ""
     cfg       = "-C #{@gem_root}/cfg/test65.cfg"
 
