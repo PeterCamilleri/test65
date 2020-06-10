@@ -23,6 +23,7 @@ class TestScript
     @options[:objs] = []
     @options[:libs] = ["sim65c02.lib"]
     @options[:config] = "#{@options[:gem_root]}/cfg/test65.cfg"
+    @quiet = @options[:quiet].to_s
   end
 
 end

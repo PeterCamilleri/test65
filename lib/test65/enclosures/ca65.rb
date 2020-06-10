@@ -20,13 +20,12 @@ class TestScript
     target  = "--target #{@options[:target]} "
     paths   = build_args("-I", @options[:ca65_paths])
     options = build_args(@options[:ca65_options])
-    quiet   = @options[:quiet].to_s
 
     # Convert source assemble files into object files.
     source_files.each do |source|
       object = "-o " + change_type(source, ".o")
       list   = @options[:list] ? "-l " + change_type(source, ".lst") : ""
-      system("ca65 #{target} #{paths} #{list} #{options} #{object} #{source} #{quiet}\n")
+      system("ca65 #{target} #{paths} #{list} #{options} #{object} #{source} #{@quiet}\n")
       fail "Error assembling #{localize_path(source)}" unless $?.exitstatus == 0
 
       @options[:objs] << object
