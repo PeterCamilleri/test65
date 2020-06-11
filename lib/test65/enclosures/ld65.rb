@@ -27,11 +27,12 @@ class TestScript
     @phase = :simulate
 
     @target   = change_type(@options[:objs][0], ".out")
+    @map_file = change_type(@options[:objs][0], ".map")
     lib_paths = build_args("--lib-path", @options[:lib_paths])
     objs      = build_args(@options[:objs])
     libs      = build_args("--lib", @options[:libraries])
     opts      = build_args(@options[:ld65_options])
-    map       = @options[:map] ? "-m #{@mapping}" : ""
+    map       = @options[:map] ? "-m #{@map_file}" : ""
     cfg       = "-C #{@gem_root}/cfg/test65.cfg"
 
     system("ld65 #{libs} #{cfg} #{@objs} #{map} -o #{@target} #{@quiet}\n")

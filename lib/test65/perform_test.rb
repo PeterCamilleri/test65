@@ -26,4 +26,30 @@ class TestScript
     @quiet = @options[:quiet].to_s
   end
 
+  # Cleanup after ourselves
+  def clean_up
+    # Remove objects and executable unless told to keep them.
+    unless @options[:keep]
+      File.delete(@target) if File.exists?(@target)
+
+      @options[:objs].each do |file|
+        File.delete(file) if File.exists?(file)
+      end
+    end
+
+    # Remove listing files unless they were requested.
+    unless @options[:list]
+      @options[:objs].each do |file|
+        file = change_type(file, ".lst")
+        File.delete(file) if File.exists?(file)
+      end
+    end
+
+    # Remove the map file if needed.
+    File.delete(@map_file)  if !@options[:map] && File.exists?(@map_file)
+
+    # Always remove this file if it exists.
+    File.delete("_kwhyit") if File.exists?("_kwhyit")
+  end
+
 end
