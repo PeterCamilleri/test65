@@ -11,7 +11,7 @@ class TestScript
   # Run the simulator to get the actual test results.
   def sim65
     fail "Sequence error: sim65" unless @phase == :simulate
-    @phase == :done
+    @phase = :done
 
     opts = build_args(@options[:sim65_options])
     system("sim65 #{opts} #{@output}\n")

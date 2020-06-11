@@ -35,7 +35,7 @@ class TestScript
     map       = @options[:map] ? "-m #{@map_file}" : ""
     cfg       = "-C " + @options[:config]
 
-    command = "ld65 #{lib_paths} #{libs} #{cfg} #{objs} #{map} -o #{@output} #{@quiet}\n"
+    command = "ld65 #{lib_paths} #{libs} #{cfg} #{opts} #{objs} #{map} -o #{@output} #{@quiet}\n"
     system(command)
     fail "Error linking #{localize_path(@output)}." unless $?.exitstatus == 0
   end
