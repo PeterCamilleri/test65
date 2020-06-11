@@ -34,7 +34,7 @@ class TestScript
   def clean_up
     # Remove objects and executable unless told to keep them.
     unless @options[:keep]
-      File.delete(@target) if File.exists?(@target)
+      File.delete(@output) if File.exists?(@output)
 
       @options[:objs].each do |file|
         File.delete(file) if File.exists?(file)

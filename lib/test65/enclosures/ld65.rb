@@ -26,7 +26,7 @@ class TestScript
     fail "Sequence error: ld65" unless [:create, :link].include?(@phase)
     @phase = :simulate
 
-    @target   = change_type(@options[:objs][0], ".out")
+    @output   = change_type(@options[:objs][0], ".out")
     @map_file = change_type(@options[:objs][0], ".map")
     lib_paths = build_args("--lib-path", @options[:lib_paths])
     objs      = build_args(@options[:objs])
@@ -35,9 +35,9 @@ class TestScript
     map       = @options[:map] ? "-m #{@map_file}" : ""
     cfg       = "-C " + @options[:config]
 
-    command = "ld65 #{lib_paths} #{libs} #{cfg} #{objs} #{map} -o #{@target} #{@quiet}\n"
+    command = "ld65 #{lib_paths} #{libs} #{cfg} #{objs} #{map} -o #{@output} #{@quiet}\n"
     system(command)
-    fail "Error linking #{localize_path(@target)}." unless $?.exitstatus == 0
+    fail "Error linking #{localize_path(@output)}." unless $?.exitstatus == 0
   end
 
 end

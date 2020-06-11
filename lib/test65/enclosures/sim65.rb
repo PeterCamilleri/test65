@@ -14,9 +14,9 @@ class TestScript
     @phase == :done
 
     opts = build_args(@options[:sim65_options])
-    system("sim65 #{opts} #{@target}\n")
+    system("sim65 #{opts} #{@output}\n")
     status = $?.exitstatus
-    fail "Test #{localize_path(@target)} failed with error code: #{status}" unless status == 0
+    fail "Test #{localize_path(@output)} failed with error code: #{status}" unless status == 0
   end
 
 end
