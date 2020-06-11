@@ -6,6 +6,7 @@ module Test65
     @options = {}
 
     opts = GetoptLong.new(
+      ["--debug",      "-d",       GetoptLong::NO_ARGUMENT],
       ["--help",       "-h", "-?", GetoptLong::NO_ARGUMENT],
       ["--list",       "-l",       GetoptLong::NO_ARGUMENT],
       ["--map",        "-m",       GetoptLong::NO_ARGUMENT],
@@ -17,6 +18,8 @@ module Test65
 
     opts.each do |opt, arg|
       case opt
+      when "--debug"
+        @options[:debug] = true
       when "--help"
         puts IO.read(@gem_root + "/help.txt")
         exit

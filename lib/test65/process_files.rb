@@ -28,7 +28,7 @@ module Test65
 
   rescue => err
     puts err
-    puts err.backtrace
+    puts err.backtrace if @options[:debug]
     @error_count += 1
   ensure
     test_script.clean_up

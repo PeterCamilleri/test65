@@ -34,6 +34,8 @@ module Test65
 
   rescue => err
     puts "Error: #{err.to_s}"
+    puts err.backtrace if @options[:debug]
+
     exit(1)
   end
 
