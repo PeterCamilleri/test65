@@ -46,7 +46,7 @@ class TestScript
     end
 
     # Remove the map file if needed.
-    File.delete(@map_file)  if !@options[:map] && File.exists?(@map_file)
+    File.delete(@map_file) if !@options[:map] && File.exists?(@map_file)
 
     # Always remove this file if it exists.
     File.delete("_kwhyit") if File.exists?("_kwhyit")
