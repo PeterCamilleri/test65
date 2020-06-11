@@ -12,7 +12,7 @@ class TestScript
   # Add some library paths for the linker.
   def ld65_libraries(*more_libs)
     fail "Sequence error: ld65_libraries" unless [:create, :link].include?(@phase)
-    append_option(:lib_paths, more_libs)
+    append_option(:libraries, more_libs)
     @phase = :link
   end
 
@@ -33,9 +33,10 @@ class TestScript
     libs      = build_args("--lib", @options[:libraries])
     opts      = build_args(@options[:ld65_options])
     map       = @options[:map] ? "-m #{@map_file}" : ""
-    cfg       = "-C #{@gem_root}/cfg/test65.cfg"
+    cfg       = "-C " + @options[:config]
 
-    system("ld65 #{libs} #{cfg} #{@objs} #{map} -o #{@target} #{@quiet}\n")
+    command = "ld65 #{lib_paths} #{libs} #{cfg} #{objs} #{map} -o #{@target} #{@quiet}\n"
+    system(command)
     fail "Error linking #{localize_path(@target)}." unless $?.exitstatus == 0
   end
 

@@ -27,7 +27,8 @@ class Test65Test < Minitest::Test
     system "rm foo\n"
   end
 
-  def test_that_version_works
+  def test_that_the_default_test_works
+#    system "ruby exe/test65 -v \n"
     system "ruby exe/test65 -v > foo\n"
     assert_equal(0, $?.exitstatus)
     system "rm foo\n"

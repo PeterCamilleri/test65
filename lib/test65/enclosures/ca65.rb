@@ -22,10 +22,10 @@ class TestScript
     options = build_args(@options[:ca65_options])
 
     # Convert source assemble files into object files.
-    source_files.each do |source|
-      object = "-o " + change_type(source, ".o")
+    sources.each do |source|
+      object = change_type(source, ".o")
       list   = @options[:list] ? "-l " + change_type(source, ".lst") : ""
-      system("ca65 #{target} #{paths} #{list} #{options} #{object} #{source} #{@quiet}\n")
+      system("ca65 #{target} #{paths} #{list} #{options} -o #{object} #{source} #{@quiet}\n")
       fail "Error assembling #{localize_path(source)}" unless $?.exitstatus == 0
 
       @options[:objs] << object

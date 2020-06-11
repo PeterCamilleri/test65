@@ -21,6 +21,11 @@ module Test65
   def self.process_file(file)
     puts localize_path(file) if @options[:verbose]
 
+    test_script = TestScript.new(@options, file)
+    test_script.ca65
+    test_script.ld65
+    test_script.sim65
+
 #   generate_names(file)
 #   ca65
 #   ld65
@@ -28,9 +33,10 @@ module Test65
 
   rescue => err
     puts err
+    puts err.backtrace
     @error_count += 1
   ensure
-#   cleanup unless @options[:keep]
+    test_script.clean_up
   end
 
 # # Setup the various intermediate file names.
