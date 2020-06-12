@@ -22,10 +22,14 @@ module Test65
   @gem_root = Pathname.new(lib_path).parent.to_s
   @asminc = @gem_root + "/asminc"   # TODO remove this variable.
 
+  # Figure out where the compiler is.
+  fail "The CC65_HOME variable is not set." unless temp = ENV["CC65_HOME"]
+  @cc65_home = standardize_path(temp)
+
   # The code entry point. Run some 65c02 tests.
   # Returns
   #   0 for success
-  #   1 for failure
+  #   Other for failure
   def self.process
     process_args
     process_path
@@ -35,8 +39,11 @@ module Test65
   rescue => err
     puts "Error: #{err.to_s}"
     puts err.backtrace if @options[:debug]
-
     exit(1)
+
+  ensure
+    # Always remove this file if it exists.
+    File.delete("_kwhyit") if File.exists?("_kwhyit")
   end
 
 end

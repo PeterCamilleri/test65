@@ -53,6 +53,7 @@ module Test65
     # Setup some default paths
     @options[:gem_root]   = @gem_root
     @options[:ca65_paths] = @gem_root + "/asminc"
+    @options[:cc65_home]  = @cc65_home
 
   rescue => err
     puts "Error: #{err.to_s}"
