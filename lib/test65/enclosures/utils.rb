@@ -17,4 +17,5 @@ class TestScript
   def append_option(key, *value)
     @options[key] = ((@options[key] || []) + [value]).flatten
   end
+
 end
