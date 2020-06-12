@@ -21,11 +21,17 @@ module Test65
   def self.process_file(file)
     puts localize_path(file) if @options[:verbose]
 
-    test_script = TestScript.new(@options, file)
-    test_script.ca65
-    test_script.ld65
-    test_script.sim65
+    script(file) do
+      ca65
+      ld65
+      sim65
+    end
+  end
 
+  # Process a script.
+  def self.script(file=nil, &block)
+    test_script = TestScript.new(@options, file)
+    test_script.instance_exec(&block)
   rescue => err
     puts err
     puts err.backtrace if @options[:debug]
