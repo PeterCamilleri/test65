@@ -2,6 +2,8 @@
 
 class Object
 
+  private
+
   # Convert a path into standard form.
   def standardize_path(path)
     path.gsub("\\", "/")
