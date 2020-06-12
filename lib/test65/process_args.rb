@@ -57,6 +57,7 @@ module Test65
 
   rescue => err
     puts "Error: #{err.to_s}"
+    puts err.backtrace if @options[:debug]
     puts
     puts IO.read(@gem_root + "/help.txt")
     exit
