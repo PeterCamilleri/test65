@@ -14,7 +14,11 @@ class TestScript
     @phase = :done
 
     opts = build_args(@options[:sim65_options])
-    system("sim65 #{opts} #{@output}\n")
+
+    # Build the command and run it.
+    command = "sim65 #{opts} #{@output}\n"
+    puts command if @options[:debug]
+    system(command)
     status = $?.exitstatus
     fail "Test #{localize_path(@output)} failed with error code: #{status}" unless status == 0
   end

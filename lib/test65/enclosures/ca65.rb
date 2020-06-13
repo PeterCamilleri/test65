@@ -25,13 +25,15 @@ class TestScript
     sources.each do |source|
       object = change_type(source, ".o")
       list   = @options[:list] ? "-l " + change_type(source, ".lst") : ""
-      system("ca65 #{target} #{paths} #{list} #{options} -o #{object} #{source} #{@quiet}\n")
+      command = "ca65 #{target} #{paths} #{list} #{options} -o #{object} #{source} #{@quiet}\n"
+      puts command if @options[:debug]
+      system(command)
       fail "Error assembling #{localize_path(source)}" unless $?.exitstatus == 0
 
       @options[:objs] << object
     end
 
-    # Reset back to defaults.
+    # Reset path and options back to defaults.
     @options[:ca65_paths] = ["#{@options[:gem_root]}/asminc"]
     @options[:ca65_options] = []
   end
