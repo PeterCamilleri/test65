@@ -12,21 +12,10 @@ class TestScript
     @options = options.full_dup
     @phase   = :create
 
-    if source
-      @options[:asm_src] = [source]
-    else
-      @options[:asm_src] = []
-    end
+    ca65_initialize(source)
+    ld65_initialize
+    sim65_initialize
 
-    @options[:target] = "sim65c02"
-    @options[:ca65_paths] = ["#{@options[:gem_root]}/asminc"]
-    @options[:ca65_options] = []
-    @options[:objs] = []
-    @options[:lib_paths] = []
-    @options[:libraries] = ["sim65c02.lib"]
-    @options[:ld65_options] = []
-    @options[:config] = "#{@options[:gem_root]}/cfg/test65.cfg"
-    @options[:sim65_options] = []
     @quiet = @options[:quiet].to_s
   end
 

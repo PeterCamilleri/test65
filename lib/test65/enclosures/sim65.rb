@@ -2,6 +2,11 @@
 
 class TestScript
 
+  # Setup sim65
+  def sim65_initialize
+    @options[:sim65_options] = []
+  end
+
   def sim65_options(*more_options)
     fail "Sequence error: ld65_options" unless @phase == :simulate
     append_option(:sim65_options, more_options)

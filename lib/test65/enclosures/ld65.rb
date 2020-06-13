@@ -2,6 +2,14 @@
 
 class TestScript
 
+  # Setup ld65
+  def ld65_initialize
+    @options[:lib_paths] = []
+    @options[:libraries] = ["sim65c02.lib"]
+    @options[:ld65_options] = []
+    @options[:config] = "#{@options[:gem_root]}/cfg/test65.cfg"
+  end
+
   # Add some library paths for the linker.
   def ld65_lib_paths(*more_paths)
     fail "Sequence error: ld65_lib_paths" unless [:create, :link].include?(@phase)

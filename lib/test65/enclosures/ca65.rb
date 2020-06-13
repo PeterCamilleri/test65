@@ -1,6 +1,20 @@
 # An enclosure for the ca65 assembler.
 class TestScript
 
+  # Setup ca65
+  def ca65_initialize(source=nil)
+    if source
+      @options[:asm_src] = [source]
+    else
+      @options[:asm_src] = []
+    end
+
+    @options[:target] = "sim65c02"
+    @options[:ca65_paths] = ["#{@options[:gem_root]}/asminc"]
+    @options[:ca65_options] = []
+    @options[:objs] = []
+  end
+
   # Add some include paths for the assembler.
   def ca65_inc_paths(*more_paths)
     fail "Sequence error: ca65_inc_paths" unless @phase == :create
