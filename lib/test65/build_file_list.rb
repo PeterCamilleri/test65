@@ -21,7 +21,7 @@ module Test65
   # Check the list of files to be processed.
   def self.check_files
     @test_files = @arg_files.map do |file|
-      std_file = standardize_path(file)
+      std_file = file.standardize_path
 
       if !(found = Dir.glob(std_file)).empty?
         found.map {|subfile| File.absolute_path(file) }

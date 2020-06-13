@@ -47,7 +47,7 @@ class TestScript
     command = "ld65 #{lib_paths} #{libs} #{cfg} #{opts} #{objs} #{map} -o #{@output} #{@quiet}\n"
     puts command if @options[:debug]
     system(command)
-    fail "Error linking #{localize_path(@output)}." unless $?.exitstatus == 0
+    fail "Error linking #{@output.localize_path}." unless $?.exitstatus == 0
   end
 
 end

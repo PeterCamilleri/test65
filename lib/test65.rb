@@ -25,7 +25,7 @@ module Test65
   # Figure out where the compiler is.
   temp = ENV["CC65_HOME"]
   fail "The CC65_HOME variable is not set." unless temp
-  @cc65_home = standardize_path(temp)
+  @cc65_home = temp.standardize_path
 
   # The code entry point. Run some 65c02 tests.
   # Returns

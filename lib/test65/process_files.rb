@@ -19,7 +19,7 @@ module Test65
 
   # Process a file.
   def self.process_file(file)
-    puts localize_path(file) if @options[:verbose]
+    puts file.localize_path if @options[:verbose]
 
     case File.extname(file)
     when ".a65"

@@ -6,7 +6,7 @@ module Test65
   def self.process_path
     path = @options[:path] || get_default_path
 
-    localized_path = localize_path(path)
+    localized_path = path.localize_path
     fail "Path #{localized_path} does not exist."  unless File.exists?(path)
     fail "Path #{localized_path} is not a folder." unless File.directory?(path)
     puts "Using path: #{localized_path}" if @options[:verbose]

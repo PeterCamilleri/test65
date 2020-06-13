@@ -25,7 +25,7 @@ class TestScript
     puts command if @options[:debug]
     system(command)
     status = $?.exitstatus
-    fail "Test #{localize_path(@output)} failed with error code: #{status}" unless status == 0
+    fail "Test #{@output.localize_path} failed with error code: #{status}" unless status == 0
   end
 
 end

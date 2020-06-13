@@ -31,7 +31,7 @@ module Test65
         @options[:map] = true
       when "--path"
         unless @options[:path]
-          @options[:path] = File.absolute_path(standardize_path(arg))
+          @options[:path] = File.absolute_path(arg.standardize_path)
         else
           fail "Multiple path options are not allowed."
         end
