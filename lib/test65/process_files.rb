@@ -21,10 +21,18 @@ module Test65
   def self.process_file(file)
     puts localize_path(file) if @options[:verbose]
 
-    script(file) do
-      ca65
-      ld65
-      sim65
+    case File.extname(file)
+    when ".a65"
+      script(file) do
+        ca65
+        ld65
+        sim65
+      end
+
+    when ".rb"
+      load file
+    else
+      fail "Don't know how to process #{files}"
     end
   end
 
