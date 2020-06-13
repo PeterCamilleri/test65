@@ -23,7 +23,8 @@ module Test65
   @asminc = @gem_root + "/asminc"   # TODO remove this variable.
 
   # Figure out where the compiler is.
-  fail "The CC65_HOME variable is not set." unless temp = ENV["CC65_HOME"]
+  temp = ENV["CC65_HOME"]
+  fail "The CC65_HOME variable is not set." unless temp
   @cc65_home = standardize_path(temp)
 
   # The code entry point. Run some 65c02 tests.
