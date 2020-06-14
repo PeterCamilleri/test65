@@ -42,7 +42,7 @@ class TestScript
       command = "ca65 #{target} #{paths} #{list} #{options} -o #{object} #{source} #{@quiet}\n"
       puts command if @options[:debug]
       system(command)
-      fail "Error assembling #{localize_path(source)}" unless $?.exitstatus == 0
+      fail "Error assembling #{source.localize_path}" unless $?.exitstatus == 0
 
       @options[:objs] << object
     end
