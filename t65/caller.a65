@@ -1,0 +1,17 @@
+; Test a script with multiple objects
+.include "test65.i65"
+
+.import exit:absolute
+.import add_two:absolute
+.export _main
+
+.pc02
+
+.code
+
+_main:
+  lda #10
+  jsr add_two
+  cmp #12
+  fail_ne 10
+  tests_pass
