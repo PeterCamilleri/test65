@@ -1,4 +1,4 @@
-; Minimum code that passes a test
+; See how we deal with a linker error.
 
 .import exit:absolute
 .import an_error:absolute

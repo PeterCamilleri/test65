@@ -1,4 +1,4 @@
-; Minimum code that passes a test
+; See how we deal with an assembly error.
 
 .import exit:absolute
 .export _main
