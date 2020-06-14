@@ -23,11 +23,7 @@ module Test65
 
     case File.extname(file)
     when ".a65"
-      script(file) do
-        ca65
-        ld65
-        sim65
-      end
+      script(file) { ca65; ld65; sim65 }
 
     when ".rb"
       load file
