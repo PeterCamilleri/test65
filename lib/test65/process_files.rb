@@ -31,12 +31,13 @@ module Test65
 
     when ".rb"
       load file
+
     else
       fail "Don't know how to process #{files}"
     end
   end
 
-  # Process a script.
+  # Process a test script.
   def self.script(file=nil, &block)
     test_script = TestScript.new(@options, file)
     test_script.instance_exec(&block)
