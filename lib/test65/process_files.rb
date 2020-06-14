@@ -29,7 +29,7 @@ module Test65
       load file
 
     else
-      fail "Don't know how to process #{files}"
+      fail "Don't know how to process #{file}"
     end
   end
 
