@@ -21,7 +21,7 @@ class TestScript
     opts = build_args(@options[:sim65_options])
 
     # Build the command and run it.
-    command = "sim65 #{opts} #{@output}\n"
+    command = "sim65 #{opts}#{@output} #{@quiet}\n"
     puts command if @options[:debug]
     system(command)
     status = $?.exitstatus

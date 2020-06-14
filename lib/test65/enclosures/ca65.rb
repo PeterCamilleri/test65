@@ -29,7 +29,7 @@ class TestScript
   # Assemble some files.
   def ca65(*more_files)
     fail "Sequence error: ca65" unless @phase == :create
-    sources = (@options[:asm_src] + more_files).flatten
+    sources = (@options[:asm_src] + adjust(more_files)).flatten
     @options[:asm_src] = []
     target  = "--target #{@options[:target]} "
     paths   = build_args("-I", @options[:ca65_paths])
@@ -39,7 +39,7 @@ class TestScript
     sources.each do |source|
       object = change_type(source, ".o")
       list   = @options[:list] ? "-l " + change_type(source, ".lst") : ""
-      command = "ca65 #{target} #{paths} #{list} #{options} -o #{object} #{source} #{@quiet}\n"
+      command = "ca65 #{target}#{paths}#{list}#{options}-o #{object} #{source} #{@quiet}\n"
       puts command if @options[:debug]
       system(command)
       fail "Error assembling #{source.localize_path}" unless $?.exitstatus == 0

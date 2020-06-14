@@ -41,10 +41,10 @@ class TestScript
     libs      = build_args("--lib", @options[:libraries])
     opts      = build_args(@options[:ld65_options])
     map       = @options[:map] ? "-m #{@map_file}" : ""
-    cfg       = "-C " + @options[:config]
+    cfg       = "-C " + @options[:config] + " "
 
     # Build the command and run it.
-    command = "ld65 #{lib_paths} #{libs} #{cfg} #{opts} #{objs} #{map} -o #{@output} #{@quiet}\n"
+    command = "ld65 #{lib_paths}#{libs}#{cfg}#{opts}#{objs}#{map} -o #{@output} #{@quiet}\n"
     puts command if @options[:debug]
     system(command)
     fail "Error linking #{@output.localize_path}." unless $?.exitstatus == 0

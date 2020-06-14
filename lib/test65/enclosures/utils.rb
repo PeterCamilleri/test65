@@ -18,4 +18,9 @@ class TestScript
     @options[key] = ((@options[key] || []) + [value]).flatten
   end
 
+  # Adjust a list of files to include the path to the test file.
+  def adjust(files)
+    files.map { |file| @options[:path] + "/" + file }
+  end
+
 end
