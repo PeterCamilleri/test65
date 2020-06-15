@@ -17,7 +17,7 @@ class TestScript
   # Assemble some files.
   def ca65(file, options="")
     fail "Sequence error: ca65" unless @phase == :create
-    source  = @options[:path] + "/" + file
+    source  = File.absolute_path(@options[:path] + "/" + file)
     target  = "--target #{@options[:target]} "
     paths   = build_args("-I", @options[:ca65_paths])
 
