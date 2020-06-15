@@ -8,7 +8,11 @@
 
 .code
 
+.ifdef do_add_two
+
 add_two:
   clc
   adc #2
   rts
+
+.endif
