@@ -1,11 +1,7 @@
 ; Test a script with multiple objects
 
-; See how we deal with a linker error.
-
 .export add_two:absolute
-
 .pc02
-
 .code
 
 .ifdef do_add_two
