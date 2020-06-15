@@ -2,13 +2,7 @@
 class TestScript
 
   # Setup ca65
-  def ca65_initialize(source=nil)
-    if source
-      @options[:asm_src] = [source]
-    else
-      @options[:asm_src] = []
-    end
-
+  def ca65_initialize
     @options[:target] = "sim65c02"
     @options[:ca65_paths] = ["#{@options[:gem_root]}/asminc"]
     @options[:ca65_options] = []
@@ -27,25 +21,22 @@ class TestScript
   end
 
   # Assemble some files.
-  def ca65(*more_files)
+  def ca65(file)
     fail "Sequence error: ca65" unless @phase == :create
-    sources = (@options[:asm_src] + adjust(more_files)).flatten
-    @options[:asm_src] = []
+    source  = @options[:path] + "/" + file
     target  = "--target #{@options[:target]} "
     paths   = build_args("-I", @options[:ca65_paths])
     options = build_args(@options[:ca65_options])
 
     # Convert source assemble files into object files.
-    sources.each do |source|
-      object = change_type(source, ".o")
-      list   = @options[:list] ? "-l " + change_type(source, ".lst") : ""
-      command = "ca65 #{target}#{paths}#{list}#{options}-o #{object} #{source} #{@quiet}\n"
-      puts command if @options[:debug]
-      system(command)
-      fail "Error assembling #{source.localize_path}" unless $?.exitstatus == 0
+    object = change_type(source, ".o")
+    list   = @options[:list] ? "-l " + change_type(source, ".lst") : ""
+    command = "ca65 #{target}#{paths}#{list}#{options}-o #{object} #{source} #{@quiet}\n"
+    puts command if @options[:debug]
+    system(command)
+    fail "Error assembling #{source.localize_path}" unless $?.exitstatus == 0
 
-      @options[:objs] << object
-    end
+    @options[:objs] << object
 
     # Reset path and options back to defaults.
     @options[:ca65_paths] = ["#{@options[:gem_root]}/asminc"]

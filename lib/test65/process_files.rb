@@ -23,7 +23,7 @@ module Test65
 
     case File.extname(file)
     when ".a65"
-      script(file) { ca65; ld65; sim65 }
+      script { ca65(File.basename(file)); ld65; sim65 }
 
     when ".rb"
       load file
@@ -34,8 +34,8 @@ module Test65
   end
 
   # Process a test script.
-  def self.script(file=nil, &block)
-    test_script = TestScript.new(@options, file)
+  def self.script(&block)
+    test_script = TestScript.new(@options)
     test_script.instance_exec(&block)
   rescue => err
     puts err

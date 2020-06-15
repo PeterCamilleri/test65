@@ -8,11 +8,11 @@ require_relative 'enclosures/sim65'
 class TestScript
 
   # Create a test script object and set up its default options.
-  def initialize(options={}, source=nil)
+  def initialize(options={})
     @options = options.full_dup
     @phase   = :create
 
-    ca65_initialize(source)
+    ca65_initialize
     ld65_initialize
     sim65_initialize
 
