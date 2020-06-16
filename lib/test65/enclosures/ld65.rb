@@ -24,13 +24,7 @@ class TestScript
     @phase = :link
   end
 
-  def ld65_options(*more_options)
-    fail "Sequence error: ld65_options" unless [:create, :link].include?(@phase)
-    append_option(:ld65_options, more_options)
-    @phase = :link
-  end
-
-  def ld65
+  def ld65(options="")
     fail "Sequence error: ld65" unless [:create, :link].include?(@phase)
     @phase = :simulate
 
@@ -39,12 +33,11 @@ class TestScript
     lib_paths = build_args("--lib-path", @options[:lib_paths])
     objs      = build_args(@options[:objs])
     libs      = build_args("--lib", @options[:libraries])
-    opts      = build_args(@options[:ld65_options])
     map       = @options[:map] ? "-m #{@map_file}" : ""
     cfg       = "-C " + @options[:config] + " "
 
     # Build the command and run it.
-    command = "ld65 #{lib_paths}#{libs}#{cfg}#{opts}#{objs}#{map} -o #{@output} #{@quiet}\n"
+    command = "ld65 #{lib_paths}#{libs}#{cfg}#{options} #{objs}#{map} -o #{@output} #{@quiet}\n"
     puts command if @options[:debug]
     system(command)
     fail "Error linking #{@output.localize_path}." unless $?.exitstatus == 0
