@@ -55,6 +55,16 @@ class Test65Test < Minitest::Test
     system "rm foo\n"
   end
 
+  def test_that_it_succeeds_in_c
+    system "ruby exe/test65 min_pass_c.c65 > foo\n"
+    assert_equal(0, $?.exitstatus)
+
+    system "ruby exe/test65 min_pass_c.rb > foo\n"
+    assert_equal(0, $?.exitstatus)
+
+    system "rm foo\n"
+  end
+
   def test_that_it_fails
     system "ruby exe/test65 min_fail.a65 > foo\n"
     assert_equal(1, $?.exitstatus)
