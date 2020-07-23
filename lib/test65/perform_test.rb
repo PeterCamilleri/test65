@@ -1,6 +1,7 @@
 # Run a test script for the test65 program.
 
 require_relative 'enclosures/utils'
+require_relative 'enclosures/cc65'
 require_relative 'enclosures/ca65'
 require_relative 'enclosures/ld65'
 require_relative 'enclosures/sim65'
