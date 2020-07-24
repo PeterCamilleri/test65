@@ -1,4 +1,4 @@
-test65 - Run tests of 65c02 assembler code.
+test65 - Run tests of 65C02 C and assembler code.
 
 Usage: test65 {options} {files}
 
