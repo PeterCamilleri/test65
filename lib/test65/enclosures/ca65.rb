@@ -23,7 +23,7 @@ class TestScript
     # Convert source assembler files into object files.
     object = change_type(source, ".o")
     list   = @options[:list] ? "-l " + change_type(source, ".lst") : ""
-    command = "ca65 #{target}#{paths}#{list}#{options} -o #{object} #{source} #{@quiet}\n"
+    command = "ca65 #{target}#{paths}#{list} #{options} -o #{object} #{source} #{@quiet}\n"
     puts command if @options[:debug]
     system(command)
     fail "Error assembling #{source.localize_path}" unless $?.exitstatus == 0

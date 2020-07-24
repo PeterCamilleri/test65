@@ -21,8 +21,8 @@ class TestScript
     paths = build_args("--include-dir", @options[:cc65_inc_paths])
 
     # Convert source C files into assembler files.
-    list = @options[:list] ? "--add-source " : ""
-    command = "cc65 #{target}#{paths}#{options} #{source} #{@quiet}\n"
+    list = @options[:list] ? "--add-source " : " "
+    command = "cc65 #{target}#{list}#{paths}#{options} #{source} #{@quiet}\n"
     puts command if @options[:debug]
     system(command)
     fail "Error compiling #{source.localize_path}" unless $?.exitstatus == 0
