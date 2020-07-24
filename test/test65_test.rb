@@ -49,7 +49,7 @@ class Test65Test < Minitest::Test
     system "ruby exe/test65 min_pass.a65 > foo\n"
     assert_equal(0, $?.exitstatus)
 
-    system "ruby exe/test65 min_pass.rb > foo\n"
+    system "ruby exe/test65 min_pass2.rb > foo\n"
     assert_equal(0, $?.exitstatus)
 
     system "rm foo\n"
