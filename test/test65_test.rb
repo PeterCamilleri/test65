@@ -121,12 +121,6 @@ class Test65Test < Minitest::Test
     system "rm foo\n"
   end
 
-  def test_the_default_tests
-    system "ruby exe/test65 > foo\n"
-    assert_equal(0, $?.exitstatus)
-    system "rm foo\n"
-  end
-
   def test_that_it_handles_wild_cards
     system "ruby exe/test65 -q *pass.a65 > foo\n"
     assert_equal(0, $?.exitstatus)

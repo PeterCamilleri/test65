@@ -15,6 +15,7 @@ module Test65
   # Scan the path for files to be processed.
   def self.scan_files
     @test_files = Dir.glob(@options[:path] + "/t65*.a65") +
+                  Dir.glob(@options[:path] + "/t65*.c65") +
                   Dir.glob(@options[:path] + "/t65*.rb")
     fail "Cannot locate any test files" if @test_files.empty?
   end
