@@ -22,6 +22,9 @@ module Test65
     puts file.localize_path if @options[:verbose]
 
     case File.extname(file)
+    when ".c65"
+      script { cc65(File.basename(file)); ld65; sim65 }
+
     when ".a65"
       script { ca65(File.basename(file)); ld65; sim65 }
 

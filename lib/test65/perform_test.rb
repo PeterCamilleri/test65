@@ -13,6 +13,10 @@ class TestScript
     @options = options.full_dup
     @phase   = :create
 
+    @options[:objs] = []
+    @options[:temps] = []
+
+    cc65_initialize
     ca65_initialize
     ld65_initialize
     sim65_initialize
@@ -25,6 +29,10 @@ class TestScript
     # Remove objects and executable unless told to keep them.
     unless @options[:keep]
       File.delete(@output) if File.exists?(@output)
+
+      @options[:temps].each do |file|
+        File.delete(file) if File.exists?(file)
+      end
 
       @options[:objs].each do |file|
         File.delete(file) if File.exists?(file)

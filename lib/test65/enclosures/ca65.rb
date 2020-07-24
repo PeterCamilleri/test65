@@ -5,7 +5,6 @@ class TestScript
   def ca65_initialize
     @options[:ca65_target] = "sim65c02"
     @options[:ca65_inc_paths] = ["#{@options[:gem_root]}/asminc"]
-    @options[:objs] = []
   end
 
   # Add some include paths for the assembler.
@@ -21,7 +20,7 @@ class TestScript
     target  = "--target #{@options[:ca65_target]} "
     paths   = build_args("-I", @options[:ca65_inc_paths])
 
-    # Convert source assemble files into object files.
+    # Convert source assembler files into object files.
     object = change_type(source, ".o")
     list   = @options[:list] ? "-l " + change_type(source, ".lst") : ""
     command = "ca65 #{target}#{paths}#{list}#{options} -o #{object} #{source} #{@quiet}\n"
