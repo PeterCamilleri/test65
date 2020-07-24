@@ -1,0 +1,8 @@
+// Minimum test in "C" that fails.
+
+#include <stdlib.h>
+
+int main(void)
+{
+    exit(255);
+}
