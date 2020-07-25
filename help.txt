@@ -20,5 +20,5 @@ Notes:
   folder or one of its parent folders.
 - Wildcards are allowed for files but not the path.
 - If no files are specified, then all files matching "t65*.c65", "t65*.a65",
-  or "t65*.rb" in the test folder are tested.
+  "t65*.c", "t65*.asm", or "t65*.rb" in the test folder are tested.
 - If files are specified, only the specified file(s) are tested.
